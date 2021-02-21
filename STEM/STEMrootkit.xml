@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="STEM Subversion Software" identifier="stemrootkit" category="Material" cargocontaineridentifier="chemicalcrate" Tags="smallitem,chem,medical" description="This will subvert the software of anyone with a STEM implant, turning the victim into an unstoppable killing machine." useinhealthinterface="true" scale="0.5">
+  <Upgrade gameversion="0.10.0.0" scale="0.5" />
+  <PreferredContainer primary="toxcontainer" spawnprobability="0.2"/>
+  <PreferredContainer primary="locker"/>
+  <Price baseprice="5000" soldeverywhere="false">
+  <Price locationtype="outpost" multiplier="1.2" sold="false"/>
+  <Price locationtype="city" multiplier="1.3" sold="false"/>
+  <Price locationtype="research" multiplier="1" sold="true" minavailable="1"/>
+  <Price locationtype="military" multiplier="1.2" sold="false"/>
+  <Price locationtype="mine" multiplier="1.3" sold="false"/>
+  </Price>
+  <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="832,448,64,64" origin="0.5,0.5" />
+  <Sprite texture="Content/Items/CreatureLoot/CreatureLoot.png" sourcerect="0,186,38,70" depth="0.6" origin="0.5,0.5" />
+  <Body width="35" height="70" density="20" />
+  <MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="5,0" handle1="-5,0" holdangle="10" reload="1.0">
+  <StatusEffect type="OnUse" target="This" Condition="-100.0" disabledeltatime="true" />
+  <StatusEffect type="OnUse" target="Character">
+  <Conditional stemaugment="gte 5" />
+    <Affliction identifier="stemtakeover" amount="5" />
+  </StatusEffect>
+  <StatusEffect type="OnBroken" target="This">
+    <Remove />
+  </StatusEffect>
+    </MeleeWeapon>
+  </Item>
+
+  <Item name="STEM Software Maintenance Tool" identifier="stemrootkitrange" category="Equipment" hideinmenus="false" description="A short-range transmitter capable of interfacing with STEM systems for software maintenance. Improper use may result in a STEM malfunction." interactthroughwalls="true" cargocontaineridentifier="metalcrate" tags="smallitem,tool,weapon" impactsoundtag="impact_metal_light" scale="0.32">
+    <Deconstruct time="8">
+      <Item identifier="steel"  />
+      <Item identifier="fpgacircuit" />
+      <Item identifier="fpgacircuit" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="25">
+      <RequiredSkill identifier="weapons" level="75"/>
+      <RequiredItem identifier="steel" />
+      <RequiredItem identifier="fpgacircuit" />
+      <RequiredItem identifier="fpgacircuit" />
+    </Fabricate>
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="832,320,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Tools/tools.png" sourcerect="473,1,29,65" depth="0.55" origin="0.5,0.5" />
+    <Body width="27" height="60" density="12" />>
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" aimpos="50,10" handle1="-24,-25" handle2="0,-25" msg="ItemMsgPickUpSelect" />
+    <RepairTool structurefixamount="0" range="300" barrelpos="35,13" repairmultiple="true" repairthroughwalls="false" combatpriority="1">
+    <RequiredSkill identifier="medical" level="35" />
+      <StatusEffect type="OnUse" targettype="Limb" >
+        <Condition stemaugment="gte 5" />
+        <ReduceAffliction identifier="stemtakeover" amount="5" />
+      </StatusEffect>
+      <StatusEffect type="OnFailure" targettype="Limb" >
+        <Condition stemaugment="gte 5" />
+        <Affliction identifier="stemtakeover" amount="25" />
+      </StatusEffect>
+    </RepairTool>
+  </Item>
+</Items>

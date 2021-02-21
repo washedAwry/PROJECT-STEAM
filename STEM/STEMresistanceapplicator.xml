@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="STEM Antihack Applicator" identifier="stemresistanceapplicator" scale="0.5" hideinmenus="True" >
+    <Sprite name="Antihack" texture="Content/Items/Jobgear/headgears.png" depth="0.6" sourcerect="1,1,1,1" origin="0.5,0.5" />
+    <Body radius="15" height="10" density="30" bodytype="Kinematic" />
+    <ItemContainer capacity="1" hideitems="true">
+      <ContainedStateIndicator texture="Content/UI/ContainerIndicators.png" sourcerect="1,70,107,31" />
+      <Containable items="stem" />
+      <StatusEffect type="Always" target="NearbyCharacters" range="30" lifetime="1" checkconditionalalways="true" >
+				<Affliction identifier="stemtakeoverresistance" strength="1000" amount="1000" />
+        <ReduceAffliction identifier="stemtakeover" amount="300" strength="300" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="This" delay="1.5">
+				<RemoveItem />
+      </StatusEffect>
+    </ItemContainer>
+  </Item>
+
+  <Item name="Explosive Implant Trigger" identifier="explosiveimplanttrigger" scale="0.5" hideinmenus="True" >
+    <Sprite name="Explosive Implant" texture="Content/Items/Jobgear/headgears.png" depth="0.6" sourcerect="1,1,1,1" origin="0.5,0.5" />
+    <Body radius="15" height="10" density="30" bodytype="Kinematic" />
+    <ItemContainer capacity="1" hideitems="true">
+      <ContainedStateIndicator texture="Content/UI/ContainerIndicators.png" sourcerect="1,70,107,31" />
+      <Containable items="stem" />
+      <StatusEffect type="Always" target="This" delay="2.5">
+        <Sound file="Content/Sounds/Damage/Gore1.ogg" selectionmode="All" range="10000" />
+        <Sound file="Content/Sounds/Damage/Gore2.ogg" range="10000" />
+        <Sound file="Content/Sounds/Damage/Gore5.ogg" range="10000" />
+        <sound file="Content/Items/Weapons/ExplosionMedium1.ogg" type="OnUse" range="10000" />
+        <sound file="Content/Items/Weapons/ExplosionDebris1.ogg" type="OnUse" range="10000" />
+        <ParticleEmitter particle="bloodtrail" particleamount="7" scalemin="0.15" scalemax="0.5" velocitymin="15" velocitymax="30" anglemin="0" anglemax="360" />
+        <ParticleEmitter particle="gib" particleamount="2" scalemin="0.25" scalemax="0.5" velocitymin="0" velocitymax="0" anglemin="0" anglemax="360" />
+        <ParticleEmitter particle="bloodtrail" particleamount="7" scalemin="0.15" scalemax="0.5" velocitymin="15" velocitymax="30" anglemin="0" anglemax="360" />
+        <ParticleEmitter particle="gib" particleamount="2" scalemin="0.25" scalemax="0.5" velocitymin="0" velocitymax="0" anglemin="0" anglemax="360" />
+        <Explosion range="600.0" structuredamage="5" itemdamage="500" force="10" severlimbsprobability="0.5" decal="explosion" decalsize="0.5">
+          <Affliction identifier="bleeding" strength="100" />
+          <Affliction identifier="explosiondamage" strength="300" />
+          <Affliction identifier="stun" strength="10"/>
+        </Explosion>
+				<RemoveItem />
+				<Remove />
+      </StatusEffect>
+    </ItemContainer>
+  </Item>
+</Items>

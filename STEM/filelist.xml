@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<contentpackage name="STEM" path="Mods/STEM/filelist.xml" corepackage="false" gameversion="0.11.0.8" steamworkshopid="2261916290" installtime="1606441094">
+  <Character file="Mods/STEM/Characters/Stemhuman/Stemhuman.xml" />
+  <Afflictions file="Mods/STEM/Afflictions.xml" />
+  <Item file="Mods/STEM/STEM.xml" />
+  <Item file="Mods/STEM/STEMrootkit.xml" />
+  <Item file="Mods/STEM/STEMresistanceapplicator.xml" />
+  <Item file="Mods/STEM/Revivalimplant.xml" />
+  <Item file="Mods/STEM/Surgery.xml" />
+  <Afflictions file="Mods/STEM/Surgeryafflictions.xml" />
+  <Item file="Mods/STEM/VanillaOverrides.xml" />
+  <Afflictions file="Mods/STEM/VanillaAfflictionOverrides.xml" />
+  <Item file="Mods/STEM/Surgery2.xml" />
+  <TraitorMissions file="Mods/STEM/TraitorMissions.xml" />
+  <Text file="Mods/STEM/EnglishSurgeryTraitor.xml" />
+  <Sounds file="Mods/STEM/sounds.xml" />
+  <None file="Mods/STEM/thunderdome.ogg" />
+  <None file="Mods/STEM/aedshock.ogg" />
+  <Character file="Mods/STEM/Characters/Mindlesshuman/Mindlesshuman.xml" />
+  <Character file="Mods/STEM/Characters/Resurrectedcyborgcrawler/Resurrectedcyborgcrawler.xml" />
+  <Character file="Mods/STEM/Characters/Resurrectedcyborghuman/Resurrectedcyborghuman.xml" />
+  <None file="Mods/STEM/cauterysmall.png" />
+  <None file="Mods/STEM/bonesaw.png" />
+  <None file="Mods/STEM/hemostat.png" />
+  <None file="Mods/STEM/humanheart.png" />
+  <None file="Mods/STEM/kitchenwaretongs.png" />
+  <None file="Mods/STEM/medkit.png" />
+  <None file="Mods/STEM/redtoken.png" />
+  <None file="Mods/STEM/retractors.png" />
+  <None file="Mods/STEM/scalpel.png" />
+  <None file="Mods/STEM/sewingneedle.png" />
+  <None file="Mods/STEM/stationbouncedradio.png" />
+  <None file="Mods/STEM/trachea.png" />
+  <None file="Mods/STEM/tracheafresh.png" />
+  <None file="Mods/STEM/tweezers.png" />
+</contentpackage>

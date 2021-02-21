@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<infotexts language="English" nowhitespace="false" translatedname="English">
+
+	<huskimplant_traitormissionstartinfotext>Medical Malpractice</huskimplant_traitormissionstartinfotext>
+<huskimplant_traitorobjectivestartmessage1>A faint ringing in your headset is followed by a sequence of numbers and letters, which jogs your memory. Your mission is as follows:\n[traitorgoalinfos]</huskimplant_traitorobjectivestartmessage1>
+<huskimplant_goalinfotext_1>In the [targethullname], check everywhere. A special set of tools is hidden there, which will assist you in the mission. Do not allow anyone else to stumble across these, or the mission is over.</huskimplant_goalinfotext_1>
+<huskimplant_objectivefailmessage1>You couldn't find the tools. A shame, it seems your work here is over.</huskimplant_objectivefailmessage1>
+<huskimplant_objectivesuccessmessage1>Good work. Ensure that you have the Autosurgeon and the program. Your mission depends on it.</huskimplant_objectivesuccessmessage1>
+<huskimplant_traitorobjectivestartmessage2>Don't use this on anyone else, this is a one-time use Autosurgeon, and the program will self-destruct upon use.\n[traitorgoalinfos]</huskimplant_traitorobjectivestartmessage2>
+<huskimplant_goalinfotext_2>Distract the crew by sabotaging the reactor.</huskimplant_goalinfotext_2>
+<huskimplant_objectivefailmessage2>You were unable to sabotage the nuclear reactor. This failure will be noted by your handler.</huskimplant_objectivefailmessage2>
+<huskimplant_objectivesuccessmessage2>Lights out.</huskimplant_objectivesuccessmessage2>
+<huskimplant_traitorobjectivestartmessage3>Your target is next.\n[traitorgoalinfos]</huskimplant_traitorobjectivestartmessage3>
+<huskimplant_goalinfotext_3>Your target is [targetname]. Isolate them and plant the Autosurgeon on their throat with the program and husk stinger installed.</huskimplant_goalinfotext_3>
+<huskimplant_objectivefailmessage3>Mission failed. Your handler will be informed.</huskimplant_objectivefailmessage3>
+<huskimplant_objectivesuccessmessage3>The target is infected. Good work.</huskimplant_objectivesuccessmessage3>
+<huskimplant_traitorobjectivestartmessage4>Now head towards an exit.\n[traitorgoalinfos]</huskimplant_traitorobjectivestartmessage4>
+<huskimplant_goalinfotext_4>Distance yourself from the submarine, and do not let anyone catch you.</huskimplant_goalinfotext_4>
+<huskimplant_objectivefailmessage4>You have made quite the terrible mistake.</huskimplant_objectivefailmessage4>
+<huskimplant_objectivesuccessmessage4>You should be at a safe distance now. Extraction enroute.</huskimplant_objectivesuccessmessage4>
+</infotexts>

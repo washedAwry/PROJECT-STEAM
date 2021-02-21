@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Items>
+
+<Item name="Scalpel" identifier="scalpel" category="Equipment" cargocontaineridentifier="chemicalcrate" Tags="smallitem,medical,surgery" description="A tool used to make incisions during surgery." useinhealthinterface="True" scale="0.5">
+    <PreferredContainer primary="toxcontainer" spawnprobability="0.2"/>
+    <PreferredContainer primary="locker"/>
+    <Fabricate suitablefabricators="medicalfabricator" outcondition="100.0">
+        <RequiredItem identifier="aluminium" />
+    </Fabricate>
+    <Price baseprice="50" soldeverywhere="true">
+        <Price locationtype="outpost" multiplier="1.2" sold="false"/>
+        <Price locationtype="city" multiplier="1.3" sold="false"/>
+        <Price locationtype="research" multiplier="1" sold="true" minavailable="1"/>
+        <Price locationtype="military" multiplier="1.2" sold="false"/>
+        <Price locationtype="mine" multiplier="1.3" sold="false"/>
+    </Price>
+    <InventoryIcon texture="Mods/STEM/tools.png" sourcerect="0,0,150,150" origin="0.5,0.5" />
+    <Sprite texture="Mods/STEM/tools.png" sourcerect="0,300,147,22" depth="0.55" origin="0.5,0.5" />
+    <Body width="65" height="15" density="50" />
+    <MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="5,0" handle1="-5,0" holdangle="10" reload="1.0">
+		<RequiredSkill identifier="medical" level="50" />
+		<StatusEffect type="OnUse" target="This" Condition="-5.0" disabledeltatime="true" />
+		<StatusEffect type="OnUse" target="Limb">
+			<Conditional isdead="false" />
+			<Conditional stun="gte 1" />
+			<Affliction identifier="firstincision" strength="9999" />
+			<Affliction identifier="firstincision" strength="9999" />
+			<Affliction identifier="firstincision" strength="9999" />
+			<Affliction identifier="firstincision" strength="9999" />
+			<ReduceAffliction identifier="stitches" amount="9999" />
+			<ReduceAffliction identifier="stitches" amount="9999" />
+			<ReduceAffliction identifier="stitches" amount="9999" />
+			<ReduceAffliction identifier="stitches" amount="9999" />
+		</StatusEffect>
+		<StatusEffect type="OnUse" target="Limb">
+			<Conditional isdead="true" />
+			<Affliction identifier="firstincision" strength="9999" />
+			<Affliction identifier="firstincision" strength="9999" />
+			<Affliction identifier="firstincision" strength="9999" />
+			<Affliction identifier="firstincision" strength="9999" />
+			<ReduceAffliction identifier="stitches" amount="9999" />
+			<ReduceAffliction identifier="stitches" amount="9999" />
+			<ReduceAffliction identifier="stitches" amount="9999" />
+			<ReduceAffliction identifier="stitches" amount="9999" />
+		</StatusEffect>
+		<StatusEffect tags="medical" type="OnFailure" target="Limb, This" duration="1" condition="-50.0">
+			<Conditional firstincision="lt 1" />
+			<Conditional stun="gte 1" />
+			<Affliction identifier="bleeding" strength="2" />
+			<Affliction identifier="organdamage" strength="3" />
+			<Affliction identifier="firstincision" strength="10" />
+			<ReduceAffliction identifier="stitches" amount="9999" />
+			<ReduceAffliction identifier="stitches" amount="9999" />
+			<ReduceAffliction identifier="stitches" amount="9999" />
+			<ReduceAffliction identifier="stitches" amount="9999" />
+			<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+			<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+			<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+			<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+			<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+			<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+			<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+		</StatusEffect>
+    </MeleeWeapon>
+</Item>
+
+<Item name="Hemostat" identifier="hemostat" category="Equipment" cargocontaineridentifier="chemicalcrate" Tags="smallitem,medical,surgery" description="A tool used to clamp bleeders during surgery." useinhealthinterface="True" scale="0.25">
+    <PreferredContainer primary="toxcontainer" spawnprobability="0.2"/>
+    <PreferredContainer primary="locker"/>
+    <Fabricate suitablefabricators="medicalfabricator" outcondition="100.0">
+        <RequiredItem identifier="aluminium" />
+    </Fabricate>
+    <Price baseprice="50" soldeverywhere="true">
+        <Price locationtype="outpost" multiplier="1.2" sold="false"/>
+        <Price locationtype="city" multiplier="1.3" sold="false"/>
+        <Price locationtype="research" multiplier="1" sold="true" minavailable="1"/>
+        <Price locationtype="military" multiplier="1.2" sold="false"/>
+        <Price locationtype="mine" multiplier="1.3" sold="false"/>
+    </Price>
+        <InventoryIcon texture="Mods/STEM/tools.png" sourcerect="150,0,150,150" origin="0.5,0.5" />
+        <Sprite texture="Mods/STEM/tools.png" sourcerect="147,300,55,86" depth="0.55" origin="0.5,0.5" />
+        <Body width="65" height="15" density="50" />
+        <MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="5,0" handle1="-5,0" holdangle="10" reload="1.0">
+        <RequiredSkill identifier="medical" level="50" />
+    <StatusEffect type="OnUse" target="This" Condition="-5.0" disabledeltatime="true"/>
+    <StatusEffect type="OnUse" target="Limb">
+        <Conditional firstincision="gte 2" />
+        <Conditional stun="gte 1" />
+        <Affliction identifier="clampbleeders" strength="9999" />
+        <Affliction identifier="clampbleeders" strength="9999" />
+        <Affliction identifier="clampbleeders" strength="9999" />
+        <Affliction identifier="clampbleeders" strength="9999" />
+        <ReduceAffliction identifier="bleeding" amount="50" />
+        <ReduceAffliction identifier="cutartery" amount="9999" />
+    </StatusEffect>
+    <StatusEffect type="OnUse" target="Limb">
+        <Conditional firstincision="gte 2" />
+        <Conditional isdead="true" />
+        <Affliction identifier="clampbleeders" strength="9999" />
+        <Affliction identifier="clampbleeders" strength="9999" />
+        <Affliction identifier="clampbleeders" strength="9999" />
+        <Affliction identifier="clampbleeders" strength="9999" />
+        <ReduceAffliction identifier="bleeding" amount="50" />
+        <ReduceAffliction identifier="cutartery" amount="9999" />
+    </StatusEffect>
+    <StatusEffect tags="medical" type="OnFailure" target="Limb, This" duration="0.45" condition="-50.0">
+        <Affliction identifier="internaldamage" strength="6" />
+        <Affliction identifier="organdamage" strength="5" />
+        <Affliction identifier="lacerations" strength="4" />
+        <Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+        <ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.25" scalemax="0.5" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+        </StatusEffect>
+    </MeleeWeapon>
+</Item>
+
+<Item name="Retractors" identifier="retractors" category="Equipment" cargocontaineridentifier="chemicalcrate" Tags="smallitem,medical,surgery" description="A tool used to retract skin during surgery." useinhealthinterface="True" scale="0.25">
+	<PreferredContainer primary="toxcontainer" spawnprobability="0.2"/>
+	<PreferredContainer primary="locker"/>
+	<Fabricate suitablefabricators="medicalfabricator" outcondition="100.0">
+		<RequiredItem identifier="aluminium" />
+	</Fabricate>
+	<Price baseprice="50" soldeverywhere="true">
+		<Price locationtype="outpost" multiplier="1.2" sold="false"/>
+		<Price locationtype="city" multiplier="1.3" sold="false"/>
+		<Price locationtype="research" multiplier="1" sold="true" minavailable="1"/>
+		<Price locationtype="military" multiplier="1.2" sold="false"/>
+		<Price locationtype="mine" multiplier="1.3" sold="false"/>
+	</Price>
+	<InventoryIcon texture="Mods/STEM/tools.png" sourcerect="300,0,150,150" origin="0.5,0.5" />
+	<Sprite texture="Mods/STEM/tools.png" sourcerect="202,300,49,130" depth="0.55" origin="0.5,0.5" />
+	<Body width="65" height="15" density="50" />
+	<MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="5,0" handle1="-5,0" holdangle="10" reload="1.0">
+		<RequiredSkill identifier="medical" level="50" />
+		<StatusEffect type="OnUse" target="This" Condition="-5.0" disabledeltatime="true" />
+		<StatusEffect type="OnUse" target="Limb" comparison="and">
+			<Conditional stun="gte 1" />
+			<Conditional clampbleeders="gte 1" />
+			<Affliction identifier="retractskin" strength="9999" />
+			<Affliction identifier="retractskin" strength="9999" />
+			<Affliction identifier="retractskin" strength="9999" />
+			<Affliction identifier="retractskin" strength="9999" />
+		</StatusEffect>
+		<StatusEffect type="OnUse" target="Limb" comparison="and">
+			<Conditional isdead="true" />
+			<Conditional clampbleeders="gte 1" />
+			<Affliction identifier="retractskin" strength="9999" />
+			<Affliction identifier="retractskin" strength="9999" />
+			<Affliction identifier="retractskin" strength="9999" />
+			<Affliction identifier="retractskin" strength="9999" />
+		</StatusEffect>
+		<StatusEffect tags="medical" type="OnFailure" target="Limb, This" duration="0.75" condition="-50.0">
+			<Affliction identifier="internaldamage" strength="6" />
+			<Affliction identifier="organdamage" strength="5" />
+		</StatusEffect>
+	</MeleeWeapon>
+</Item>
+
+<Item name="Cautery Pen" identifier="cautery" category="Equipment" cargocontaineridentifier="chemicalcrate" Tags="smallitem,medical,surgery" description="A tool used to stop bleeding by effectively welding the wound together." useinhealthinterface="True" scale="0.25">
+	<PreferredContainer primary="toxcontainer" spawnprobability="0.2"/>
+	<PreferredContainer primary="locker"/>
+	<Fabricate suitablefabricators="medicalfabricator" outcondition="100.0">
+		<RequiredItem identifier="aluminium" />
+	</Fabricate>
+	<Price baseprice="50" soldeverywhere="true">
+		<Price locationtype="outpost" multiplier="1.2" sold="false"/>
+		<Price locationtype="city" multiplier="1.3" sold="false"/>
+		<Price locationtype="research" multiplier="1" sold="true" minavailable="1"/>
+		<Price locationtype="military" multiplier="1.2" sold="false"/>
+		<Price locationtype="mine" multiplier="1.3" sold="false"/>
+	</Price>
+	<InventoryIcon texture="Mods/STEM/tools.png" sourcerect="0,150,150,150" origin="0.5,0.5" />
+	<Sprite texture="Mods/STEM/tools.png" sourcerect="297,300,87,14" depth="0.55" origin="0.5,0.5" />
+	<Body width="65" height="15" density="50" />
+	<MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="5,0" handle1="-5,0" holdangle="10" reload="1.0">
+		<RequiredSkill identifier="medical" level="50" />
+		<StatusEffect type="OnUse" target="This" Condition="-5.0" disabledeltatime="true" />
+		<StatusEffect type="OnUse" target="Limb" comparison="and">
+			<Conditional retractskin="gte 1" />
+			<Affliction identifier="cauterize" strength="15" />
+			<ReduceAffliction identifier="bleeding" amount="23" />
+			<ReduceAffliction identifier="cutartery" amount="100" />
+		</StatusEffect>
+		<StatusEffect tags="medical" type="OnFailure" target="Limb, This" duration="0.75" condition="-35.0">
+			<Affliction identifier="burn" strength="6" />
+			<Affliction identifier="burn" strength="5" />
+			<Affliction identifier="cauterize" strength="6" />
+			<ReduceAffliction identifier="bleeding" amount="12" />
+			<ReduceAffliction identifier="cutartery" amount="75" />
+		</StatusEffect>
+	</MeleeWeapon>
+</Item>
+
+<Item name="Bonesaw" identifier="bonesaw" category="Equipment" cargocontaineridentifier="chemicalcrate" Tags="smallitem,medical,surgery" description="A tool used to saw through your bones!" scale="0.5">
+	<PreferredContainer primary="toxcontainer" spawnprobability="0.2"/>
+	<PreferredContainer primary="locker"/>
+	<Fabricate suitablefabricators="medicalfabricator" outcondition="100.0">
+		<RequiredItem identifier="steel" />
+	</Fabricate>
+	<Price baseprice="50" soldeverywhere="true">
+		<Price locationtype="outpost" multiplier="1.2" sold="false"/>
+		<Price locationtype="city" multiplier="1.3" sold="false"/>
+		<Price locationtype="research" multiplier="1" sold="true" minavailable="1"/>
+		<Price locationtype="military" multiplier="1.2" sold="false"/>
+		<Price locationtype="mine" multiplier="1.3" sold="false"/>
+	</Price>
+	<InventoryIcon texture="Mods/STEM/tools.png" sourcerect="450,0,150,150" origin="0.5,0.5" />
+	<Sprite texture="Mods/STEM/tools.png" sourcerect="251,300,46,128" depth="0.55" origin="0.6,0.2" />
+	<Body width="65" height="15" density="50" />
+    <Holdable slots="Any,RightHand" controlpose="true" aimpos="50,0" handle1="0,25" msg="ItemMsgPickUpSelect" >
+      <StatusEffect type="OnUse" target="Character" speedmultiplier="0.1" duration="5" setvalue="true">
+        <ReduceAffliction identifier="bonecut" amount="9999" />
+        <ReduceAffliction identifier="bonecut" amount="9999" />
+        <ReduceAffliction identifier="bonecut" amount="9999" />
+        <ReduceAffliction identifier="bonecut" amount="9999" />
+      </StatusEffect>
+    </Holdable>
+    <RepairTool firedamage="0.0" structurefixamount="0.0" range="25" barrelpos="-5,-40" particles="weld" repairmultiple="false" repairthroughwalls="false" combatpriority="10" levelwallfixamount="0">
+      <StatusEffect type="OnUse" targettype="Character" >
+	  	<Conditional bonecut="lt 20" />
+		<Conditional stun="gt 0" />
+		<Conditional retractskin="gte 75" />
+        <Affliction identifier="bonecut" amount="20" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" targettype="Character" setvalue="true" stackable="True" tags="CutActive" duration="0.2" delay="0.05" >
+        <Conditional bonecut="gte 20" />
+		<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+		<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+		<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+		<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+		<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+		<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+        <Affliction identifier="bonecut" amount="2.5" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" targettype="Character" setvalue="true" comparison="And" >
+        <Conditional bonecut="gte 20" />
+		<Conditional stun="gt 0" />
+		<Conditional HasStatusTag="CutActive" />
+		<ReduceAffliction identifier="cutfailure" amount="9999" />
+		<ReduceAffliction identifier="cutfailure" amount="9999" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" targettype="Character" setvalue="true" comparison="And" delay="0.2" >
+        <Conditional bonecut="gte 20" />
+		<Conditional stun="gt 0" />
+		<Conditional HasStatusTag="CutActive" />
+		<ReduceAffliction identifier="cutfailure" amount="9999" />
+		<ReduceAffliction identifier="cutfailure" amount="9999" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" targettype="Character" setvalue="true" stackable="true" delay="1.5" comparison="And" >
+        <Conditional bonecut="gte 20" />
+		<Conditional stun="gt 0" />
+		<Affliction identifier="cutfailure" amount="5" />
+      </StatusEffect>
+      <Fixable identifier="structure" />
+      <RequiredSkill identifier="medical" level="35" />
+    </RepairTool>
+</Item>
+<!--
+<Item name="Bonesaw" identifier="bonesaw" category="Equipment" cargocontaineridentifier="chemicalcrate" Tags="smallitem,medical,surgery" description="A tool used to saw through your bones!" scale="0.5">
+	<PreferredContainer primary="toxcontainer" spawnprobability="0.2"/>
+	<PreferredContainer primary="locker"/>
+	<Fabricate suitablefabricators="medicalfabricator" outcondition="100.0">
+		<RequiredItem identifier="aluminium" />
+	</Fabricate>
+	<Price baseprice="50" soldeverywhere="true">
+		<Price locationtype="outpost" multiplier="1.2" sold="false"/>
+		<Price locationtype="city" multiplier="1.3" sold="false"/>
+		<Price locationtype="research" multiplier="1" sold="true" minavailable="1"/>
+		<Price locationtype="military" multiplier="1.2" sold="false"/>
+		<Price locationtype="mine" multiplier="1.3" sold="false"/>
+	</Price>
+	<InventoryIcon texture="Mods/STEM/tools.png" sourcerect="0,0,46,128" origin="0.5,0.5" />
+	<Sprite texture="Mods/STEM/tools.png" sourcerect="0,0,46,128" depth="0.55" origin="0.6,0.1" />
+	<Body width="65" height="15" density="50" />
+	<MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="5,0" handle1="-5,0" holdangle="0" reload="1.0">
+		<RequiredSkill identifier="medical" level="50" />
+		<StatusEffect type="OnUse" target="This" Condition="-5.0" disabledeltatime="true" />
+		<StatusEffect type="OnUse" target="Limb" comparison="And">
+			<Conditional stun="gte 1" />
+			<Conditional retractskin="gte 2" />
+			<Affliction identifier="bonecut" amount="9999" />
+		</StatusEffect>
+		<StatusEffect type="OnUse" target="Limb" comparison="And">
+			<Conditional isdead="true" />
+			<Conditional retractskin="gte 2" />
+			<Affliction identifier="bonecut" amount="9999" />
+			<Affliction identifier="bonecut" amount="9999" />
+			<Affliction identifier="bonecut" amount="9999" />
+			<Affliction identifier="bonecut" amount="9999" />
+		</StatusEffect>
+		<StatusEffect tags="medical" type="OnFailure" target="Limb, This" duration="1" condition="-50.0">
+			<Affliction identifier="internaldamage" strength="6" />
+			<Affliction identifier="organdamage" strength="5" />
+			<Affliction identifier="bleeding" strength="7" />
+			<Affliction identifier="lacerations" strength="4" />
+			<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+			<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+			<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+			<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+			<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+			<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+			<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+		</StatusEffect>
+	</MeleeWeapon>
+</Item>
+-->
+<Item name="Tweezers" identifier="tweezers" category="Equipment" cargocontaineridentifier="chemicalcrate" Tags="smallitem,medical,surgery" description="A tool used to carefully place implants into someone's body during surgery, or remove items from someone's body." useinhealthinterface="True" scale="0.25">
+	<PreferredContainer primary="locker"/>
+	<Fabricate suitablefabricators="medicalfabricator" outcondition="100.0">
+		<RequiredItem identifier="aluminium" />
+	</Fabricate>
+	<Price baseprice="50" soldeverywhere="true">
+		<Price locationtype="outpost" multiplier="1.2" sold="false"/>
+		<Price locationtype="city" multiplier="1.3" sold="false"/>
+		<Price locationtype="research" multiplier="1" sold="true" minavailable="1"/>
+		<Price locationtype="military" multiplier="1.2" sold="false"/>
+		<Price locationtype="mine" multiplier="1.3" sold="false"/>
+	</Price>
+	<InventoryIcon texture="Mods/STEM/tools.png" sourcerect="300,150,150,150" origin="0.5,0.5" />
+	<Sprite texture="Mods/STEM/tools.png" sourcerect="478,300,21,115" depth="0.55" origin="0.5,0.5" />
+	<Body width="65" height="15" density="50" />
+	<MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="5,0" handle1="-5,0" holdangle="10" reload="1.0">
+		<RequiredSkill identifier="medical" level="35" />
+		<StatusEffect type="OnUse" target="This" Condition="-5.0" disabledeltatime="true" />
+		<ItemContainer capacity="1" hideitems="true">
+			<ContainedStateIndicator texture="Content/UI/ContainerIndicators.png" sourcerect="0,157,92,27" />
+			<Containable items="stem,revivalimplantsyringe,smallitem,medical,huskstinger" />
+		</ItemContainer>
+		<StatusEffect type="OnUse" target="Character,This" comparison="And">
+			<Conditional stun="gte 1" />
+			<Conditional retractskin="gte 1" />
+			<RequiredItem items="stem" type="Contained" />
+			<Affliction identifier="stemaugmentstarter" strength="9999" />
+			<Affliction identifier="stemaugmentstarter" strength="9999" />
+			<Affliction identifier="stemaugmentstarter" strength="9999" />
+			<Affliction identifier="stemaugmentstarter" strength="9999" />
+		</StatusEffect>
+		<StatusEffect type="OnUse" target="Character" setvalue="true" IsDead="false" comparison="And">
+			<Conditional IsDead="true" />
+			<Conditional bonecut="gte 1" />
+			<RequiredItem items="revivalimplantsyringe" type="Contained" />
+			<ReduceAffliction identifier="damage" amount="9999" />
+			<ReduceAffliction identifier="bloodloss" amount="9999" />
+			<Affliction identifier="stun" amount="9999" />
+			<Affliction identifier="revivalimplanttakeover" amount="9999" />
+			<ReduceAffliction identifier="damage" amount="9999" />
+			<ReduceAffliction identifier="bloodloss" amount="9999" />
+			<Affliction identifier="stun" amount="9999" />
+			<Affliction identifier="revivalimplanttakeover" amount="9999" />
+			<ReduceAffliction identifier="damage" amount="9999" />
+			<ReduceAffliction identifier="bloodloss" amount="9999" />
+			<Affliction identifier="stun" amount="9999" />
+			<Affliction identifier="revivalimplanttakeover" amount="9999" />
+			<ReduceAffliction identifier="damage" amount="9999" />
+			<ReduceAffliction identifier="bloodloss" amount="9999" />
+			<Affliction identifier="stun" amount="9999" />
+			<Affliction identifier="revivalimplanttakeover" amount="9999" />
+		</StatusEffect>
+		<StatusEffect type="OnUse" target="Character" setvalue="true" IsDead="false" comparison="And">
+			<Conditional IsDead="true" />
+			<Conditional bonecut="gte 1" />
+			<RequiredItem items="revivalimplantsyringe" type="Contained" />
+			<ReduceAffliction identifier="damage" amount="9999" />
+			<ReduceAffliction identifier="bloodloss" amount="9999" />
+			<Affliction identifier="stun" amount="9999" />
+			<Affliction identifier="revivalimplanttakeover" amount="9999" />
+			<ReduceAffliction identifier="damage" amount="9999" />
+			<ReduceAffliction identifier="bloodloss" amount="9999" />
+			<ReduceAffliction identifier="oxygenlow" amount="9999" />
+			<Affliction identifier="stun" amount="9999" />
+			<Affliction identifier="revivalimplanttakeover" amount="9999" />
+			<ReduceAffliction identifier="damage" amount="9999" />
+			<ReduceAffliction identifier="bloodloss" amount="9999" />
+			<Affliction identifier="stun" amount="9999" />
+			<Affliction identifier="revivalimplanttakeover" amount="9999" />
+			<ReduceAffliction identifier="damage" amount="9999" />
+			<ReduceAffliction identifier="bloodloss" amount="9999" />
+			<Affliction identifier="stun" amount="9999" />
+			<Affliction identifier="revivalimplanttakeover" amount="9999" />
+		</StatusEffect>
+		<StatusEffect type="OnUse" target="Character" setvalue="true" IsDead="false" comparison="And">
+			<Conditional bonecut="gte 1" />
+			<Conditional speciesname="eq human" />
+			<Conditional speciesname="human" />
+			<RequiredItem items="huskstinger" type="Contained" />
+			<ReduceAffliction identifier="damage" amount="9999" />
+			<ReduceAffliction identifier="bloodloss" amount="9999" />
+			<ReduceAffliction identifier="oxygenlow" amount="9999" />
+			<Affliction identifier="stun" amount="9999" />
+			<Affliction identifier="huskinfection" amount="9999" />
+			<ReduceAffliction identifier="damage" amount="9999" />
+			<ReduceAffliction identifier="bloodloss" amount="9999" />
+			<ReduceAffliction identifier="oxygenlow" amount="9999" />
+			<Affliction identifier="stun" amount="9999" />
+			<Affliction identifier="huskinfection" amount="9999" />
+			<ReduceAffliction identifier="damage" amount="9999" />
+			<ReduceAffliction identifier="bloodloss" amount="9999" />
+			<ReduceAffliction identifier="oxygenlow" amount="9999" />
+			<Affliction identifier="stun" amount="9999" />
+			<Affliction identifier="huskinfection" amount="9999" />
+		</StatusEffect>
+		<StatusEffect type="OnUse" target="Character" setvalue="true" IsDead="false" comparison="And" delay="0.2">
+			<Conditional bonecut="gte 1" />
+			<RequiredItem items="huskstinger" type="Contained" />
+			<ReduceAffliction identifier="damage" amount="9999" />
+			<ReduceAffliction identifier="bloodloss" amount="9999" />
+			<ReduceAffliction identifier="oxygenlow" amount="9999" />
+			<Affliction identifier="stun" amount="9999" />
+			<Affliction identifier="huskinfection" amount="9999" />
+			<ReduceAffliction identifier="damage" amount="9999" />
+			<ReduceAffliction identifier="bloodloss" amount="9999" />
+			<ReduceAffliction identifier="oxygenlow" amount="9999" />
+			<Affliction identifier="stun" amount="9999" />
+			<Affliction identifier="huskinfection" amount="9999" />
+			<ReduceAffliction identifier="damage" amount="9999" />
+			<ReduceAffliction identifier="bloodloss" amount="9999" />
+			<ReduceAffliction identifier="oxygenlow" amount="9999" />
+			<Affliction identifier="stun" amount="9999" />
+			<Affliction identifier="huskinfection" amount="9999" />
+			<ReduceAffliction identifier="damage" amount="9999" />
+			<ReduceAffliction identifier="bloodloss" amount="9999" />
+			<ReduceAffliction identifier="oxygenlow" amount="9999" />
+			<Affliction identifier="stun" amount="9999" />
+			<Affliction identifier="huskinfection" amount="9999" />
+		</StatusEffect>
+		<StatusEffect type="OnUse" target="Character" comparison="And">
+			<Conditional huskinfection="gte 85" />
+			<Conditional bonecut="gte 1" />
+			<Conditional speciesname="eq human" />
+			<Conditional speciesname="human" />
+			<Affliction identifier="lacerations" strength="2" />
+			<Affliction identifier="bleeding" strength="2" />
+			<Affliction identifier="stingerextracted" strength="9999" />
+			<Affliction identifier="stun" strength="7" />
+			<Affliction identifier="stun" strength="7" />
+			<Affliction identifier="stun" strength="7" />
+			<Affliction identifier="stun" strength="7" />
+			<ReduceAffliction identifier="huskinfection" amount="9999" />
+			<ReduceAffliction identifier="huskinfection" amount="9999" />
+			<ReduceAffliction identifier="huskinfection" amount="9999" />
+			<ReduceAffliction identifier="huskinfection" amount="9999" />
+			<ReduceAffliction identifier="huskinfection" amount="9999" />
+			<ReduceAffliction identifier="huskinfection" amount="9999" />
+			<ReduceAffliction identifier="huskinfection" amount="9999" />
+			<ReduceAffliction identifier="huskinfection" amount="9999" />
+			<SpawnItem spawnposition="This" identifier="huskstinger" />
+			<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="1.0" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+			<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+			<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+			<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+			<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+			<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+		</StatusEffect>
+		<StatusEffect type="OnUse" target="Character" comparison="And">
+			<Conditional bonecut="gte 1" />
+			<Conditional speciesname="eq humanhusk" />
+			<Conditional speciesname="humanhusk" />
+			<Conditional stingerextraction="lt 1" />
+			<Affliction identifier="lacerations" strength="2" />
+			<Affliction identifier="bleeding" strength="2" />
+			<Affliction identifier="stingerextracted" strength="9999" />
+			<Affliction identifier="organdamage" strength="9999" />
+			<Affliction identifier="organdamage" strength="9999" />
+			<Affliction identifier="organdamage" strength="9999" />
+			<Affliction identifier="organdamage" strength="9999" />
+			<Affliction identifier="organdamage" strength="9999" />
+			<Affliction identifier="organdamage" strength="9999" />
+			<Affliction identifier="organdamage" strength="9999" />
+			<Affliction identifier="organdamage" strength="9999" />
+			<SpawnItem spawnposition="This" identifier="huskstinger" />
+			<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="1.0" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+			<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+			<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+			<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+			<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+			<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+		</StatusEffect>
+		<StatusEffect type="OnUse" target="Character" comparison="And">
+			<Conditional bonecut="gte 1" />
+			<Conditional speciesname="eq husk" />
+			<Conditional speciesname="husk" />
+			<Conditional stingerextraction="lt 1" />
+			<Affliction identifier="lacerations" strength="2" />
+			<Affliction identifier="bleeding" strength="2" />
+			<Affliction identifier="stingerextracted" strength="9999" />
+			<Affliction identifier="organdamage" strength="9999" />
+			<Affliction identifier="organdamage" strength="9999" />
+			<Affliction identifier="organdamage" strength="9999" />
+			<Affliction identifier="organdamage" strength="9999" />
+			<Affliction identifier="organdamage" strength="9999" />
+			<Affliction identifier="organdamage" strength="9999" />
+			<Affliction identifier="organdamage" strength="9999" />
+			<Affliction identifier="organdamage" strength="9999" />
+			<SpawnItem spawnposition="This" identifier="huskstinger" />
+			<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="1.0" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+			<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+			<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+			<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+			<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+			<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+		</StatusEffect>
+		<StatusEffect type="OnUse" target="Contained" comparison="Or" delay="0.35">
+			<Remove />
+			<Remove />
+			<Remove />
+			<Remove />
+		</StatusEffect>
+		<StatusEffect tags="medical" type="OnFailure" target="Limb, This" duration="0.5" condition="-50.0" comparison="And">
+			<Conditional Isdead="false" />
+			<Conditional retractskin="gte 1" />
+			<Affliction identifier="internaldamage" strength="6" />
+			<Affliction identifier="organdamage" strength="5" />
+		</StatusEffect>
+	</MeleeWeapon>
+</Item>
+
+<Item name="Stitching Kit" identifier="stitches" category="Equipment" cargocontaineridentifier="chemicalcrate" Tags="smallitem,medical,surgery" description="A set of tools used to stitch someone up after surgery." useinhealthinterface="True" scale="0.25">
+	<PreferredContainer primary="toxcontainer" spawnprobability="0.2"/>
+	<PreferredContainer primary="locker"/>
+	<Fabricate suitablefabricators="medicalfabricator" outcondition="100.0">
+		<RequiredItem identifier="aluminium" />
+	</Fabricate>
+	<Price baseprice="50" soldeverywhere="true">
+		<Price locationtype="outpost" multiplier="1.2" sold="true"/>
+		<Price locationtype="city" multiplier="1.3" sold="false"/>
+		<Price locationtype="research" multiplier="1" sold="true" minavailable="1"/>
+		<Price locationtype="military" multiplier="1.2" sold="false"/>
+		<Price locationtype="mine" multiplier="1.3" sold="false"/>
+	</Price>
+	<InventoryIcon texture="Mods/STEM/tools.png" sourcerect="150,150,150,150" origin="0.5,0.5" />
+	<Sprite texture="Mods/STEM/sewingneedle.png" sourcerect="60,0,10,128" depth="0.55" origin="0.5,0.5" />
+	<Body width="65" height="15" density="50" />
+	<MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="5,0" handle1="-5,0" holdangle="10" reload="1.0">
+		<RequiredSkill identifier="medical" level="45" />
+		<StatusEffect type="OnUse" target="This" Condition="-5.0" disabledeltatime="true" />
+		<StatusEffect type="OnUse" target="Limb" comparison="And">
+			<Conditional retractskin="gte 1" />
+			<Conditional stemaugmentstarter="lt 1" />
+			<ReduceAffliction identifier="firstincision" amount="1000" />
+			<ReduceAffliction identifier="retractskin" amount="1000" />
+			<ReduceAffliction identifier="bonecut" amount="1000" />
+			<ReduceAffliction identifier="tonguse" amount="1000" />
+			<ReduceAffliction identifier="clampbleeders" amount="1000" />
+			<ReduceAffliction identifier="cauterize" amount="1000" />
+			<Affliction identifier="stitches" amount="50" />
+		</StatusEffect>
+		<StatusEffect type="OnUse" target="Limb" comparison="And">
+			<Conditional retractskin="gte 1" />
+			<Conditional stemaugmentstarter="gte 5" />
+			<ReduceAffliction identifier="firstincision" amount="1000" />
+			<ReduceAffliction identifier="retractskin" amount="1000" />
+			<ReduceAffliction identifier="bonecut" amount="1000" />
+			<ReduceAffliction identifier="tonguse" amount="1000" />
+			<ReduceAffliction identifier="stemaugmentstarter" amount="1000" />
+			<ReduceAffliction identifier="clampbleeders" amount="1000" />
+			<Affliction identifier="stemaugment" strength="15" />
+		</StatusEffect>
+		<StatusEffect tags="medical" type="OnFailure" target="Limb, This" duration="1" condition="-50.0">
+			<Affliction identifier="internaldamage" strength="6" />
+			<Affliction identifier="organdamage" strength="5" />
+		</StatusEffect>
+	</MeleeWeapon>
+</Item>
+
+<Item name="Surgical Toolbox" identifier="surgerybox" category="Equipment" tags="smallitem,mobilecontainer,surgery,medical" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="1" fireproof="true" description="A container used to store surgical tools." impactsoundtag="impact_metal_heavy">
+	<PreferredContainer primary="outpostcrewcabinet" minamount="0" maxamount="1" spawnprobability="0.5"/>
+	<Deconstruct time="10">
+		<Item identifier="ballisticfiber" />
+	</Deconstruct>
+	<Fabricate suitablefabricators="medicalfabricator" requiredtime="20">
+		<RequiredSkill identifier="medical" level="20" />
+		<Item identifier="ballisticfiber" />
+	</Fabricate>
+	<Price baseprice="25" >
+		<Price locationtype="outpost" multiplier="1" minavailable="4" />
+		<Price locationtype="city" multiplier="0.9" minavailable="6" />
+		<Price locationtype="research" multiplier="1.25" minavailable="1" />
+		<Price locationtype="military" multiplier="1.25" minavailable="1" />
+		<Price locationtype="mine" multiplier="1.25" minavailable="8" />
+	</Price>
+	<InventoryIcon texture="Mods/STEM/medkit.png" sourcerect="8,32,51,23" origin="0.5,0.6" />
+	<Sprite texture="Mods/STEM/medkit.png" sourcerect="8,32,51,23" origin="0.5,0.5" />
+	<Body width="90" height="60" density="20" />
+	<MeleeWeapon slots="RightHand+LeftHand,Any" controlpose="true" aimpos="45,10" handle1="0,10" handle2="-15,10" holdangle="90" reload="1" range="50" combatpriority="5" msg="ItemMsgPickUpSelect">
+		<Attack structuredamage="10" itemdamage="5" stun="0.6" targetimpulse="2">
+			<Affliction identifier="blunttrauma" strength="2" />
+			<Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+		</Attack>
+	</MeleeWeapon>
+	<ItemContainer capacity="8" keepopenwhenequipped="true" movableframe="true">
+		<Containable items="surgery,embedded" excludeditems="surgerykit" />
+	</ItemContainer>
+	<aitarget sightrange="1000" soundrange="1000" fadeouttime="2" />
+</Item>
+  
+</Items>

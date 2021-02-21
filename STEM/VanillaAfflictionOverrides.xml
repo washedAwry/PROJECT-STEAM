@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Afflictions>
+
+<override>
+  <Affliction
+    name="Husk Infection Resistance"
+    identifier="huskinfectionresistance"
+    description="Husk be gone."
+    type="resistance"
+    isbuff="true"
+    limbspecific="false"
+    maxstrength="600">
+    <Effect minstrength="0" maxstrength="600"
+      strengthchange="-1"
+      resistancefor="huskinfection"
+      minresistance="0"
+      maxresistance="0.75">
+      <StatusEffect target="Character" duration="0.75" setvalue="true" comparison="and">
+        <Conditional septic="lte 50" />
+        <ReduceAffliction identifier="septic" amount="0.01" />
+      </StatusEffect>
+      <StatusEffect target="Character" delay="5" duration="0.75" setvalue="true" comparison="and">
+        <Conditional septic="gt 50" />
+        <ReduceAffliction identifier="septic" amount="0.025" />
+        <Affliction identifier="organdamage" strength="0.05" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="384,896,128,128" color="10,193,114,255" origin="0,0"/>
+  </Affliction>
+</override>
+
+</Afflictions>

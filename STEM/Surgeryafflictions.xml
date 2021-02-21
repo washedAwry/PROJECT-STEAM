@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Afflictions>
+
+  <Affliction
+    name="Incision"
+    identifier="firstincision"
+    description="A small wound is present."
+    type="resistance"
+    isbuff="true"
+    limbspecific="false"
+    maxstrength="100"> 
+    <Effect minstrength="0" maxtrength="100" strengthchange="-0.25" />
+ <icon texture="Mods/STEM/Afflictions.png" sourcerect="0,115,115,115" color="139,60,42,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="Bleeders Clamped"
+    identifier="clampbleeders"
+    description="Bleeding has been effectively stopped by a hemostat."
+    type="resistance"
+    isbuff="true"
+    limbspecific="false"
+    maxstrength="100"> 
+    <Effect minstrength="0" maxtrength="100" strengthchange="-0.25" />
+		<icon texture="Mods/STEM/Afflictions.png" sourcerect="230,115,115,115" color="195,136,60,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="Cauterized"
+    identifier="cauterize"
+    description="Bleeding has been effectively stopped through use of a cautery pen."
+    type="resistance"
+    isbuff="true"
+    limbspecific="false"
+    maxstrength="100"> 
+    <Effect minstrength="0" maxtrength="100" strengthchange="-0.25" />
+		<icon texture="Mods/STEM/Afflictions.png" sourcerect="115,115,115,115" color="195,136,60,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="Skin Retracted"
+    identifier="retractskin"
+    description="The skin is held open by a set of retractors."
+    type="resistance"
+    isbuff="true"
+    limbspecific="false"
+    maxstrength="100"> 
+    <Effect minstrength="0" maxtrength="100" strengthchange="-0.25" />
+		<icon texture="Mods/STEM/Afflictions.png" sourcerect="345,115,115,115" color="195,136,60,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="Bones Sawed"
+    identifier="bonecut"
+    description="The bones are sliced open for easy access to the heart and lungs."
+    type="resistance"
+    isbuff="true"
+    limbspecific="false"
+    maxstrength="100"> 
+    <Effect minstrength="0" maxtrength="100" strengthchange="-0.25" />
+		<icon texture="Mods/STEM/Afflictions.png" sourcerect="0,230,115,115" color="195,136,60,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="Stitches"
+    identifier="stitches"
+    description="Surgical stitches are present."
+    type="resistance"
+    isbuff="true"
+    limbspecific="false"
+    maxstrength="100"> 
+    <Effect minstrength="0" maxtrength="100" strengthchange="-0.25" />
+ <icon texture="Mods/STEM/Afflictions.png" sourcerect="115,230,115,115" color="139,60,42,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="Mistake"
+    identifier="cutfailure"
+    description="Shit."
+    type="resistance"
+    isbuff="true"
+    limbspecific="false"
+    showiconthreshold="10000"
+    showinhealthscannerthreshold="0"
+    maxstrength="100"> 
+    <Effect minstrength="0" maxtrength="99" strengthchange="50" />
+    <Effect minstrength="99" maxstrength="101" strengthchange="-90000">
+      <StatusEffect target="Character" delay="0.5" targetlimb="Torso">
+		    <Affliction identifier="bleeding" amount="25" />
+		    <Affliction identifier="lacerations" amount="25" />
+		    <Affliction identifier="organdamage" amount="25" />
+      </StatusEffect>
+    </Effect>
+ <icon texture="Mods/STEM/Afflictions.png" sourcerect="896,640,128,128" color="139,60,42,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="Stinger Removed"
+    identifier="stingerextracted"
+    description="The husk stinger is gone."
+    type="resistance"
+    isbuff="true"
+    limbspecific="false"
+    showiconthreshold="10000"
+    showinhealthscannerthreshold="10000"
+    maxstrength="100"> 
+    <Effect minstrength="0" maxtrength="100" strengthchange="-0.25" />
+ <icon texture="Mods/STEM/Afflictions.png" sourcerect="896,640,128,128" color="139,60,42,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="Septic Wound"
+    identifier="septic"
+    description="An untreated wound has gone septic."
+    type="poison"
+    causeofdeathdescription="Died from an infected wound."
+    selfcauseofdeathdescription="You have died from an infected wound."
+    isbuff="False"
+    limbspecific="False"
+    maxstrength="100"> 
+    <Effect minstrength="0" maxtrength="15" strengthchange="-0.025"
+      minvitalitydecrease="0"
+      maxvitalitydecrease="0" />
+    <Effect minstrength="15" maxtrength="75" strengthchange="0.025"
+      minvitalitydecrease="0"
+      maxvitalitydecrease="0">
+      <StatusEffect target="Character" delay="2.5" stackable="false" comparison="and">
+        <Affliction identifier="nausea" strength="1" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="75" maxtrength="100" strengthchange="1"
+      minvitalitydecrease="0"
+      maxvitalitydecrease="300"/>
+   <icon texture="Mods/STEM/Afflictions.png" sourcerect="115,0,115,115" color="193,162,122,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="STEM Starter"
+    identifier="stemaugmentstarter"
+    description="A STEM AI Chip is currently residing in the spine of the patient, waiting to be activated."
+    type="resistance"
+    isbuff="true"
+    limbspecific="false"
+    indicatorlimb="Torso"
+    maxstrength="150"> 
+    <Effect minstrength="0" maxstrength="150" strengthchange="0" />
+		<icon texture="Mods/STEM/Afflictions.png" sourcerect="896,896,128,128" color="195,136,60,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="Open Artery"
+    identifier="cutartery"
+    description="An artery has been cut, if this is not sealed immediately, the patient will bleed out."
+    type="poison"
+    isbuff="False"
+    limbspecific="false"
+    showiconthreshold="5"
+    maxstrength="100"> 
+    <Effect minstrength="5" maxtrength="100" strengthchange="-0.25" >
+    <StatusEffect target="Limb" delay="5" setvalue="true" stackable="True" comparison="and">
+      <Affliction identifier="bleeding" strength="10" />
+      <Affliction identifier="bloodloss" strength="10" />
+    </StatusEffect>
+    </Effect>
+ <icon texture="Mods/STEM/Afflictions.png" sourcerect="896,640,128,128" color="139,60,42,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="Missing Organ: Heart"
+    identifier="heartremoved"
+    description="The heart has been completely removed from the chest cavity. Quickly fatal."
+    type="poison"
+    isbuff="False"
+    limbspecific="False"
+    indicatorlimb="Torso"
+    showiconthreshold="5"
+    maxstrength="100"> 
+    <Effect minstrength="5" maxtrength="100" strengthchange="10" >
+    <StatusEffect target="Character" delay="5" setvalue="true" stackable="True">
+      <Affliction identifier="oxygenlow" strength="35" />
+      <Affliction identifier="bloodloss" strength="35" />
+    </StatusEffect>
+    </Effect>
+ <icon texture="Mods/STEM/Afflictions.png" sourcerect="345,230,115,115" color="139,60,42,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="Missing Trachea"
+    identifier="throatremoved"
+    description="The trachea has been removed from the patient's neck. The patient is rendered entirely mute, and is quickly suffocating."
+    type="poison"
+    isbuff="False"
+    limbspecific="False"
+    indicatorlimb="Head"
+    showiconthreshold="5"
+    maxstrength="100"> 
+    <Effect minstrength="5" maxtrength="100" strengthchange="10" >
+    <StatusEffect target="Character" delay="5" setvalue="true" stackable="True" speechImpediment="100.0">
+      <Affliction identifier="oxygenlow" strength="35" />
+    </StatusEffect>
+    </Effect>
+ <icon texture="Mods/STEM/Afflictions.png" sourcerect="896,640,128,128" color="139,60,42,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="Cellular Damage"
+    identifier="celldamage"
+    description="Cell growth has become erratic and is unable to replace natural cell death."
+    type="damage"
+    causeofdeathdescription="Died of cellular instability."
+    selfcauseofdeathdescription="You have died of cellular instability."
+    isbuff="False"
+    limbspecific="False"
+    maxstrength="100"> 
+    <Effect minstrength="0" maxstrength="100" multiplybymaxvitality="true" strengthchange="0.0025"
+			minvitalitydecrease="0"
+			maxvitalitydecrease="0.75"/>
+   <icon texture="Mods/STEM/Afflictions.png" sourcerect="0,384,128,128" color="193,162,122,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="Implanted Timed Explosive"
+    identifier="explosiveimplanttimed"
+    description="A bomb is present in the body and rigged to explode after a short time."
+    type="poison"
+    isbuff="false"
+    limbspecific="false"
+    showiconthreshold="75"
+    maxstrength="100"> 
+    <Effect minstrength="0" maxtrength="98" strengthchange="1" />
+    <Effect minstrength="99" maxstrength="100"
+      strengthchange="-0.25"
+      minchromaticaberration="1.0"
+      maxchromaticaberration="5.0">
+      <StatusEffect target="Character" delay="5" speedmultiplier="0" stackable="false" setvalue="true">
+        <SpawnItem identifier="explosiveimplanttrigger" spawnposition="This" />
+      </StatusEffect>
+      <StatusEffect target="Character" speedmultiplier="0" stackable="false" setvalue="true">
+        <Sound file="Content/Items/WarningBeep.ogg" range="1000" loop="true" />
+      </StatusEffect>
+      <StatusEffect target="Character" delay="7.5" speedmultiplier="0" stackable="false" setvalue="true">
+        <RemoveCharacter />
+      </StatusEffect>
+    </Effect>
+   <icon texture="Mods/STEM/Afflictions.png" sourcerect="0,384,128,128" color="193,162,122,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="Decay"
+    identifier="decay"
+    description="The body of the patient seems to be undergoing necrosis. They don't have much life left in them, and there is no cure."
+    type="poison"
+    causeofdeathdescription="Decayed."
+    selfcauseofdeathdescription="You have decayed."
+    limbspecific="false"
+    indicatorlimb="Torso"
+    showiconthreshold="75"    
+    karmachangeonapplied="-1"
+    maxstrength="100"
+    iconcolors="60,10,10,255;90,2,5,255;125,0,0,255">
+
+    <Effect minstrength="0" maxstrength="75"
+      minvitalitydecrease="0"
+      maxvitalitydecrease="15"
+      minscreendistort="0.02"
+      maxscreendistort="2.0"
+      minchromaticaberration="0.02"
+      maxchromaticaberration="1.0"
+      strengthchange="0">
+    </Effect>
+
+    <Effect minstrength="75" maxstrength="98"
+      minvitalitydecrease="15"
+      maxvitalitydecrease="75"
+      strengthchange="0"
+      minchromaticaberration="1.0"
+      maxchromaticaberration="3.0" >
+      <StatusEffect target="Character" SpeedMultiplier="0.5" setvalue="true">
+        <ReduceAffliction identifier="stemaugment" amount="1000" />
+        <ReduceAffliction identifier="paralysisresistance" amount="1000" />
+        <ReduceAffliction identifier="psychosisresistance" amount="1000" />
+      </StatusEffect>
+      </Effect>
+
+    <Effect minstrength="99" maxstrength="100"
+      minvitalitydecrease="75"
+      maxvitalitydecrease="9999"
+      minscreendistort="0.0"
+      maxscreendistort="150.0"
+      strengthchange="2500"
+      minchromaticaberration="3.0"
+      maxchromaticaberration="150.0"
+      minradialdistort="0.0"
+      maxradialdistort="10.0" >
+	    <StatusEffect target="Character" SpeedMultiplier="0.25" setvalue="true" delay="0.5" checkconditionalalways="true" stackable="false" comparison="and" >
+      </StatusEffect>
+    </Effect>
+
+    <icon texture="Mods/STEM/Afflictions.png" sourcerect="640,639,128,130" color="125,0,0,255" origin="0,0"/>
+  </Affliction>
+
+</Afflictions>

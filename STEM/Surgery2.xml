@@ -1,0 +1,1467 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Items>
+<!-- going to implement embedded objects better in the future
+  <Item name="Crawler Tooth" identifier="crawlertooth" description="A tooth from a crawler. Easily embedded in skin, if you are unskilled enough." category="Equipment" Tags="smallitem,embedded" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light" scale="0.5">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <Price baseprice="1" soldeverywhere="false">
+      <Price locationtype="outpost" sold="false"/>
+      <Price locationtype="city" sold="false"/>
+      <Price locationtype="research" sold="false"/>
+      <Price locationtype="military" sold="false"/>
+      <Price locationtype="mine" sold="false"/>
+    </Price>
+    <PreferredContainer primary="locker,weaponcontainer"/>
+    <InventoryIcon texture="Mods/STEM/crawlertooth.png" sourcerect="0,0,64,77" origin="0.5,0.5" />
+    <Sprite texture="Mods/STEM/crawlertooth.png" depth="0.8" sourcerect="0,0,64,77" origin="0.5,0.5" />
+    <Body width="3.6" height="3.6" density="3.0" />
+    <MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="30,5" handle1="-20,0" holdangle="65" reload="1.0" range="50" combatpriority="10" msg="ItemMsgPickUpSelect">
+      <RequiredSkill identifier="medical" level="45" />
+      <Attack structuredamage="5" stun="0.2" targetimpulse="15">
+        <Affliction identifier="lacerations" strength="5" />
+        <Affliction identifier="bleeding" strength="10" />
+        <Sound file="Content/Items/Weapons/Smack1.ogg" range="800" />
+      </Attack>
+      <StatusEffect type="OnFailure" target="This,Limb">
+        <Affliction identifier="embeddedcrawltooth" strength="50" />
+        <Affliction identifier="organdamage" strength="15" />
+        <Remove />
+      </StatusEffect>
+    </MeleeWeapon>
+  </Item>
+
+  <Item name="Infected Crawler Tooth" identifier="crawlertoothhusk" description="A tooth from a crawler. Easily embedded in skin, if you are unskilled enough. A dark mass festers throughout." category="Equipment" Tags="smallitem,embedded" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light" scale="0.5">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <Price baseprice="1" soldeverywhere="false">
+      <Price locationtype="outpost" sold="false"/>
+      <Price locationtype="city" sold="false"/>
+      <Price locationtype="research" sold="false"/>
+      <Price locationtype="military" sold="false"/>
+      <Price locationtype="mine" sold="false"/>
+    </Price>
+    <PreferredContainer primary="locker,weaponcontainer"/>
+    <InventoryIcon texture="Mods/STEM/crawlertooth.png" sourcerect="0,0,64,77" origin="0.5,0.5" />
+    <Sprite texture="Mods/STEM/crawlertooth.png" depth="0.8" sourcerect="0,0,64,77" origin="0.5,0.5" />
+    <Body width="36" height="36" density="30" />
+    <MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="30,5" handle1="-20,0" holdangle="65" reload="1.0" range="50" combatpriority="10" msg="ItemMsgPickUpSelect">
+      <RequiredSkill identifier="medical" level="45" />
+      <Attack structuredamage="5" stun="0.2" targetimpulse="15">
+        <Affliction identifier="lacerations" strength="5" />
+        <Affliction identifier="bleeding" strength="10" />
+        <Affliction identifier="huskinfection" strength="0.25" />
+        <Sound file="Content/Items/Weapons/Smack1.ogg" range="800" />
+      </Attack>
+      <StatusEffect type="OnFailure" target="This,Limb" delay="0.5" probability="0.1" >
+        <Affliction identifier="embeddedcrawltoothhusk" strength="50" />
+        <Affliction identifier="organdamage" strength="15" />
+        <Affliction identifier="huskinfection" strength="0.25" />
+        <Remove />
+      </StatusEffect>
+    </MeleeWeapon>
+  </Item>
+-->
+  <Item name="Anesthetic Tank" description="An oxygen tank full of anesthetic, in order to keep patients asleep during surgery. Sometimes used for more nefarious purposes." identifier="anesthesiatank" category="Equipment,Misc" Tags="smallitem,oxygensource" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <Price baseprice="75" >
+      <Price locationtype="outpost" multiplier="1" minavailable="5"/>
+      <Price locationtype="city" multiplier="0.9" minavailable="5" />
+      <Price locationtype="research" multiplier="1" minavailable="25" />
+      <Price locationtype="military" multiplier="1" minavailable="5" />
+      <Price locationtype="mine" multiplier="1.25" minavailable="5" />
+    </Price>
+    <PreferredContainer primary="supplycab" minamount="1" maxamount="1" spawnprobability="0.5"/>
+    <PreferredContainer primary="outpostcrewcabinet" minamount="0" maxamount="3" spawnprobability="0.125"/>
+    <Deconstruct time="10">
+      <Item identifier="aluminium" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="medicalfabricator" displayname="OxygenTankEmpty" outcondition="0.0">
+      <RequiredItem identifier="aluminium" />
+    </Fabricate>
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="896,0,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Tools/tools.png" sourcerect="410,71,24,66" depth="0.55" origin="0.5,0.5" />
+    <Body width="22" height="64" density="5" />
+    <Holdable slots="Any,RightHand,LeftHand" holdpos="30,-15" handle1="0,5" handle2="0,-5" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnFire" target="This" Condition="-100.0" disabledeltatime="true">
+        <Conditional Condition="gt 25" />
+        <sound file="Content/Items/Weapons/ExplosionSmall1.ogg" range="5000" />
+        <sound file="Content/Items/Weapons/ExplosionDebris1.ogg" range="5000" />
+        <Explosion range="250.0" structuredamage="10" force="3.0">
+          <Affliction identifier="organdamage" strength="7" />
+          <Affliction identifier="stun" strength="30" />
+          <Affliction identifier="anesthesia" strength="30" />
+        </Explosion>
+      </StatusEffect>
+      <StatusEffect type="OnFire" target="This" Condition="-100.0" disabledeltatime="true" />
+    </Holdable>
+  </Item>
+
+  <Item name="Jovian Identifier Token" identifier="antagidcard" category="Equipment" Tags="smallitem" cargocontaineridentifier="metalcrate" hideinmenus="true" description="A small red token used to identify Jovian Seperatists. Can be used to order some special items, if you have the proper PDA." scale="0.25" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="Mods/STEM/Redtoken.png" sourcerect="0,0,64,64" origin="0.5,0.5" />
+    <Sprite texture="Mods/STEM/Redtoken.png" depth="0.8" sourcerect="0,0,64,64" origin="0.5,0.5" />
+    <Body width="36" height="36" density="30" />
+    <Holdable slots="Any,RightHand,LeftHand" msg="ItemMsgPickUpSelect" />
+  </Item>
+
+  <Item name="Human Heart" identifier="humanheart" category="Equipment" Tags="autodoc,surgery" cargocontaineridentifier="metalcrate" hideinmenus="true" description="An actual human heart. God knows where this came from." scale="0.25" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="Mods/STEM/Humanheart.png" sourcerect="21,4,86,128" origin="0.5,0.5" />
+    <Sprite texture="Mods/STEM/Humanheart.png" depth="0.8" sourcerect="21,4,86,128" origin="0.5,0.5" />
+    <Body width="36" height="36" density="30" />
+    <Holdable slots="Any,RightHand,LeftHand" msg="ItemMsgPickUpSelect" />
+  </Item>
+
+  <Item name="Human Trachea" identifier="humanthroat" category="Equipment" Tags="autodoc,surgery" cargocontaineridentifier="metalcrate" hideinmenus="true" description="An actual human throat. God knows where this came from." scale="0.25" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="Mods/STEM/trachea.png" sourcerect="50,7,25,69" origin="0.5,0.5" />
+    <Sprite texture="Mods/STEM/trachea.png" depth="0.8" sourcerect="50,7,25,69" origin="0.5,0.65" />
+    <Body width="25" height="36" density="30" />
+  </Item>
+
+  <Item name="Fresh Human Trachea" identifier="humanthroatfresh" category="Equipment" Tags="autodoc,surgery" cargocontaineridentifier="metalcrate" hideinmenus="true" description="An actual human throat. Looks fresh. God knows where this came from." scale="0.25" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="Mods/STEM/tracheafresh.png" sourcerect="50,7,25,69" origin="0.5,0.5" />
+    <Sprite texture="Mods/STEM/tracheafresh.png" depth="0.8" sourcerect="50,7,25,69" origin="0.5,0.65" />
+    <Body width="25" height="36" density="30" />
+  </Item>
+
+  <Item name="Autosurgeon Program: Husk Stinger Implantation" identifier="autodocstinger" category="Electrical" Tags="autodoc" cargocontaineridentifier="metalcrate" hideinmenus="false" description="An illegal program for the Autosurgeon that allows for implantation of a husk stinger." scale="0.5" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="512,64,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Electricity/signalcomp.png" depth="0.8" sourcerect="122,68,36,36" origin="0.5,0.5" />
+    <Body width="36" height="36" density="30" />
+    <Holdable slots="Any,RightHand,LeftHand" msg="ItemMsgPickUpSelect" />
+  </Item>
+
+  <Item name="Autosurgeon Program: Husk Egg Implantation" identifier="autodoceggs" category="Electrical" Tags="autodoc" cargocontaineridentifier="metalcrate" hideinmenus="false" description="An illegal program for the Autosurgeon that allows for implantation of a husk egg sample." scale="0.5" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="512,64,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Electricity/signalcomp.png" depth="0.8" sourcerect="122,68,36,36" origin="0.5,0.5" />
+    <Body width="36" height="36" density="30" />
+    <Holdable slots="Any,RightHand,LeftHand" msg="ItemMsgPickUpSelect" />
+  </Item>
+
+  <Item name="Autosurgeon Program: Husk Stinger Removal" identifier="autodocstingerremoval" category="Electrical" Tags="autodoc" cargocontaineridentifier="metalcrate" hideinmenus="false" description="A program for the Autosurgeon that allows for removal of a husk stinger." scale="0.5" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="512,64,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Electricity/signalcomp.png" depth="0.8" sourcerect="122,68,36,36" origin="0.5,0.5" />
+    <Body width="36" height="36" density="30" />
+    <Holdable slots="Any,RightHand,LeftHand" msg="ItemMsgPickUpSelect" />
+  </Item>
+
+  <Item name="Autosurgeon Program: Heart Removal" identifier="autodocheartremoval" category="Electrical" Tags="autodoc" cargocontaineridentifier="metalcrate" hideinmenus="false" description="An illegal program for the Autosurgeon that allows for removal of a heart. Quickly fatal." scale="0.5" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="512,64,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Electricity/signalcomp.png" depth="0.8" sourcerect="122,68,36,36" origin="0.5,0.5" />
+    <Body width="36" height="36" density="30" />
+    <Holdable slots="Any,RightHand,LeftHand" msg="ItemMsgPickUpSelect" />
+  </Item>
+
+  <Item name="Autosurgeon Program: Corpse Revival" identifier="autodocrevival" category="Electrical" Tags="autodoc" cargocontaineridentifier="metalcrate" hideinmenus="false" description="A program for the Autosurgeon that allows for revival of the recently deceased.." scale="0.5" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="512,64,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Electricity/signalcomp.png" depth="0.8" sourcerect="122,68,36,36" origin="0.5,0.5" />
+    <Body width="36" height="36" density="30" />
+    <Holdable slots="Any,RightHand,LeftHand" msg="ItemMsgPickUpSelect" />
+  </Item>
+
+  <Item name="Autosurgeon Program: Trachea Removal" identifier="autodocthroatremoval" category="Electrical" Tags="autodoc" cargocontaineridentifier="metalcrate" hideinmenus="false" description="An illegal program for the Autosurgeon that allows for removal of the throat. Results in suffocation and muteness." scale="0.5" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="512,64,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Electricity/signalcomp.png" depth="0.8" sourcerect="122,68,36,36" origin="0.5,0.5" />
+    <Body width="36" height="36" density="30" />
+    <Holdable slots="Any,RightHand,LeftHand" msg="ItemMsgPickUpSelect" />
+  </Item>
+
+  <Item name="Autosurgeon Program: Trachea Replacement" identifier="autodocthroatreplace" category="Electrical" Tags="autodoc" cargocontaineridentifier="metalcrate" hideinmenus="false" description="An illegal program for the Autosurgeon that allows for replace of the throat." scale="0.5" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="512,64,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Electricity/signalcomp.png" depth="0.8" sourcerect="122,68,36,36" origin="0.5,0.5" />
+    <Body width="36" height="36" density="30" />
+    <Holdable slots="Any,RightHand,LeftHand" msg="ItemMsgPickUpSelect" />
+  </Item>
+
+  <Item name="Autosurgeon Program: Heart Replacement" identifier="autodocheartreplace" category="Electrical" Tags="autodoc" cargocontaineridentifier="metalcrate" hideinmenus="false" description="A program for the Autosurgeon that allows for replacement of a heart." scale="0.5" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="512,64,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Electricity/signalcomp.png" depth="0.8" sourcerect="122,68,36,36" origin="0.5,0.5" />
+    <Body width="36" height="36" density="30" />
+    <Holdable slots="Any,RightHand,LeftHand" msg="ItemMsgPickUpSelect" />
+  </Item>
+
+  <Item name="Autosurgeon Program: STEM Implantation" identifier="autodocstem" category="Electrical" Tags="autodoc" cargocontaineridentifier="metalcrate" hideinmenus="false" description="A program for the Autosurgeon that allows for implantation of STEM." scale="0.5" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="512,64,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Electricity/signalcomp.png" depth="0.8" sourcerect="122,68,36,36" origin="0.5,0.5" />
+    <Body width="36" height="36" density="30" />
+    <Holdable slots="Any,RightHand,LeftHand" msg="ItemMsgPickUpSelect" />
+  </Item>
+
+  <Item name="Autosurgeon Program: Timed Explosive Implant" identifier="autodocexplosivetimed" category="Electrical" Tags="autodoc" cargocontaineridentifier="metalcrate" hideinmenus="false" description="An illegal program for the Autosurgeon that allows for implantation of a timed explosive." scale="0.5" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="512,64,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Electricity/signalcomp.png" depth="0.8" sourcerect="122,68,36,36" origin="0.5,0.5" />
+    <Body width="36" height="36" density="30" />
+    <Holdable slots="Any,RightHand,LeftHand" msg="ItemMsgPickUpSelect" />
+  </Item>
+
+  <Item name="Autosurgeon Program Management PDA" description="A PDA capable of programming FPGA Circuits with different Autosurgeon programs." identifier="surgerypda" category="Equipment" cargocontaineridentifier="metalcrate" tags="smallitem" impactsoundtag="impact_soft" scale="0.5" interactdistance="150">
+    <InventoryIcon name="APMPDA Inv" texture="Mods/STEM/stationbouncedradio.png" sourcerect="19,4,27,54" depth="0.6" origin="0.5,0.5" />
+    <Sprite name="APMPDA Sprite" texture="Mods/STEM/stationbouncedradio.png" sourcerect="19,4,27,54" depth="0.6" origin="0.5,0.6" />
+    <PreferredContainer primary="medcab" minamount="1" maxamount="2" spawnprobability="1"/>
+    <PreferredContainer primary="toxcab" minamount="1" maxamount="2" spawnprobability="1"/>
+    <Fabricate suitablefabricators="medicalfabricator" requiredtime="25">
+    <RequiredSkill identifier="electrical" level="35" />
+    <RequiredSkill identifier="medical" level="35" />
+    <RequiredItem identifier="fpgacircuit" />
+    <RequiredItem identifier="copper" />
+    <RequiredItem identifier="aluminium" />
+    </Fabricate>
+    <Body width="30" height="15" density="25" />
+    <CustomInterface canbeselected="false" drawhudwhenequipped="true">
+      <GuiFrame relativesize="0.4,0.6" anchor="Center" absoluteoffset="0,-30" style="ItemUI" />
+      <Button text="Autosurgeon Program: Timed Explosive Implant [FPGA Circuit + Jovian ID Token]">
+        <StatusEffect type="OnUse" targettype="This" delay="5" IsOn="false" drawhudwhenequipped="true">
+          <SpawnItem spawnposition="ThisInventory" identifier="autodocexplosivetimed" />
+          <RequiredItem items="fpgacircuit" type="Contained" />
+          <RequiredItem items="antagidcard" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" IsOn="true" drawhudwhenequipped="false">
+          <RequiredItem items="fpgacircuit" type="Contained" />
+          <RequiredItem items="antagidcard" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" targettype="Contained" targets="fpgacircuit" IsOn="true">
+          <Remove />
+          <RequiredItem items="fpgacircuit" type="Contained" />
+          <RequiredItem items="antagidcard" type="Contained" />
+        </StatusEffect>
+      </Button>
+      <Button text="Autosurgeon Program: STEM Implantation [FPGA Circuit]">
+        <StatusEffect type="OnUse" targettype="This" delay="5" IsOn="false" drawhudwhenequipped="true">
+          <SpawnItem spawnposition="ThisInventory" identifier="autodocstem" />
+          <RequiredItem items="fpgacircuit" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" IsOn="true" drawhudwhenequipped="false">
+          <RequiredItem items="fpgacircuit" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" targettype="Contained" targets="fpgacircuit" IsOn="true">
+          <Remove />
+          <RequiredItem items="fpgacircuit" type="Contained" />
+        </StatusEffect>
+      </Button>
+      <Button text="Autosurgeon Program: Heart Removal [FPGA Circuit + Jovian ID Token]">
+        <StatusEffect type="OnUse" targettype="This" delay="5" IsOn="false" drawhudwhenequipped="true">
+          <SpawnItem spawnposition="ThisInventory" identifier="autodocheartremoval" />
+          <RequiredItem items="fpgacircuit" type="Contained" />
+          <RequiredItem items="antagidcard" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" IsOn="true" drawhudwhenequipped="false">
+          <RequiredItem items="fpgacircuit" type="Contained" />
+          <RequiredItem items="antagidcard" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" targettype="Contained" targets="fpgacircuit" IsOn="true">
+          <Remove />
+          <RequiredItem items="fpgacircuit" type="Contained" />
+          <RequiredItem items="antagidcard" type="Contained" />
+        </StatusEffect>
+      </Button>
+      <Button text="Autosurgeon Program: Heart Replacement [FPGA Circuit]">
+        <StatusEffect type="OnUse" targettype="This" delay="5" IsOn="false" drawhudwhenequipped="true">
+          <SpawnItem spawnposition="ThisInventory" identifier="autodocheartreplace" />
+          <RequiredItem items="fpgacircuit" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" IsOn="true" drawhudwhenequipped="false">
+          <RequiredItem items="fpgacircuit" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" targettype="Contained" targets="fpgacircuit" IsOn="true">
+          <Remove />
+          <RequiredItem items="fpgacircuit" type="Contained" />
+        </StatusEffect>
+      </Button>
+      <Button text="Autosurgeon Program: Trachea Removal [FPGA Circuit + Jovian ID Token]">
+        <StatusEffect type="OnUse" targettype="This" delay="5" IsOn="false" drawhudwhenequipped="true">
+          <SpawnItem spawnposition="ThisInventory" identifier="autodocthroatremoval" />
+          <RequiredItem items="fpgacircuit" type="Contained" />
+          <RequiredItem items="antagidcard" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" IsOn="true" drawhudwhenequipped="false">
+          <RequiredItem items="fpgacircuit" type="Contained" />
+          <RequiredItem items="antagidcard" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" targettype="Contained" targets="fpgacircuit" IsOn="true">
+          <Remove />
+          <RequiredItem items="fpgacircuit" type="Contained" />
+          <RequiredItem items="antagidcard" type="Contained" />
+        </StatusEffect>
+      </Button>
+      <Button text="Autosurgeon Program: Trachea Replacement [FPGA Circuit]">
+        <StatusEffect type="OnUse" targettype="This" delay="5" IsOn="false" drawhudwhenequipped="true">
+          <SpawnItem spawnposition="ThisInventory" identifier="autodocthroatremoval" />
+          <RequiredItem items="fpgacircuit" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" IsOn="true" drawhudwhenequipped="false">
+          <RequiredItem items="fpgacircuit" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" targettype="Contained" targets="fpgacircuit" IsOn="true">
+          <Remove />
+          <RequiredItem items="fpgacircuit" type="Contained" />
+        </StatusEffect>
+      </Button>
+      <Button text="Autosurgeon Program: Corpse Revival [FPGA Circuit]">
+        <StatusEffect type="OnUse" targettype="This" delay="5" IsOn="false" drawhudwhenequipped="true">
+          <SpawnItem spawnposition="ThisInventory" identifier="autodocrevival" />
+          <RequiredItem items="fpgacircuit" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" IsOn="true" drawhudwhenequipped="false">
+          <RequiredItem items="fpgacircuit" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" targettype="Contained" targets="fpgacircuit" IsOn="true">
+          <Remove />
+          <RequiredItem items="fpgacircuit" type="Contained" />
+        </StatusEffect>
+      </Button>
+      <Button text="Autosurgeon Program: Husk Stinger Implantation [FPGA Circuit + Jovian ID Token]">
+        <StatusEffect type="OnUse" targettype="This" delay="5" IsOn="false" drawhudwhenequipped="true">
+          <SpawnItem spawnposition="ThisInventory" identifier="autodocstinger" />
+          <RequiredItem items="fpgacircuit" type="Contained" />
+          <RequiredItem items="antagidcard" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" IsOn="true" drawhudwhenequipped="false">
+          <RequiredItem items="fpgacircuit" type="Contained" />
+          <RequiredItem items="antagidcard" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" targettype="Contained" targets="fpgacircuit" IsOn="true">
+          <Remove />
+          <RequiredItem items="fpgacircuit" type="Contained" />
+          <RequiredItem items="antagidcard" type="Contained" />
+        </StatusEffect>
+      </Button>
+      <Button text="Autosurgeon Program: Husk Egg Implantation [FPGA Circuit + Jovian ID Token]">
+        <StatusEffect type="OnUse" targettype="This" delay="5" IsOn="false" drawhudwhenequipped="true">
+          <SpawnItem spawnposition="ThisInventory" identifier="autodoceggs" />
+          <RequiredItem items="fpgacircuit" type="Contained" />
+          <RequiredItem items="antagidcard" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" IsOn="true" drawhudwhenequipped="false">
+          <RequiredItem items="fpgacircuit" type="Contained" />
+          <RequiredItem items="antagidcard" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" targettype="Contained" targets="fpgacircuit" IsOn="true">
+          <Remove />
+          <RequiredItem items="fpgacircuit" type="Contained" />
+          <RequiredItem items="antagidcard" type="Contained" />
+        </StatusEffect>
+      </Button>
+      <Button text="Autosurgeon Program: Husk Stinger Removal [FPGA Circuit]">
+        <StatusEffect type="OnUse" targettype="This" delay="5" IsOn="false" drawhudwhenequipped="true">
+          <SpawnItem spawnposition="ThisInventory" identifier="autodocstingerremoval" />
+          <RequiredItem items="fpgacircuit" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" target="This" IsOn="true" drawhudwhenequipped="false">
+          <RequiredItem items="fpgacircuit" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnUse" targettype="Contained" targets="fpgacircuit" IsOn="true">
+          <Remove />
+          <RequiredItem items="fpgacircuit" type="Contained" />
+        </StatusEffect>
+      </Button>
+    </CustomInterface>
+    <ItemContainer capacity="2" canbeselected="false" hideitems="true" slotsperrow="5" drawinventory="true" />
+    <Holdable handle1="0,0" slots="Any,RightHand,LeftHand" msg="ItemMsgPickUpSelect"></Holdable>
+  </Item>
+
+<Item name="Autosurgeon Mk. 1" identifier="autodoc" category="Equipment" cargocontaineridentifier="chemicalcrate" Tags="smallitem,medical,surgery" description="A complicated array of surgical instruments and electronics capable of performing surgical procedures in 10 seconds. It latches on to the patient when applied, leaving the bag empty. Can be used to extract husk parasites. One-time use due to poor construction." useinhealthinterface="True" scale="1.0">
+<PreferredContainer primary="toxcontainer" spawnprobability="0.2"/>
+<PreferredContainer primary="locker"/>
+<Fabricate suitablefabricators="medicalfabricator" requiredtime="45">
+<RequiredSkill identifier="electrical" level="25" />
+<RequiredSkill identifier="medical" level="25" />
+<RequiredItem identifier="steel" />
+<RequiredItem identifier="titaniumaluminiumalloy" />
+<RequiredItem identifier="fpgacircuit" />
+<RequiredItem identifier="copper" />
+<RequiredItem identifier="aluminium" />
+</Fabricate>
+<Price baseprice="3500" soldeverywhere="true">
+<Price locationtype="outpost" multiplier="1.2" sold="false"/>
+<Price locationtype="city" multiplier="1.3" sold="false"/>
+<Price locationtype="research" multiplier="1" sold="true" minavailable="1"/>
+<Price locationtype="military" multiplier="1.2" sold="false"/>
+<Price locationtype="mine" multiplier="1.3" sold="false"/>
+</Price>
+<InventoryIcon texture="Mods/STEM/medkit.png" sourcerect="8,32,51,23" origin="0.5,0.6" />
+<Sprite texture="Mods/STEM/medkit.png" sourcerect="8,32,51,23" origin="0.5,0.5" />
+<Body width="90" height="60" density="20" />
+<MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="5,0" handle1="-5,0" holdangle="10" reload="15.0">
+<ItemContainer capacity="2" hideitems="true">
+<Containable items="stem,revivalimplantsyringe,smallitem,medical,huskstinger,autodoc" />
+</ItemContainer>
+<RequiredSkill identifier="medical" level="5" />
+<StatusEffect type="OnUse" target="This" Condition="-100.0" disabledeltatime="true" />
+<StatusEffect type="OnUse" target="Limb" delay="4" reload="3">
+<Affliction identifier="lacerations" strength="1" />
+<Affliction identifier="bleeding" strength="1" />
+<Affliction identifier="firstincision" strength="100" />
+<Affliction identifier="stun" strength="100" />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb" delay="5.5" reload="5.5">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="retractskin" strength="100" />
+<Affliction identifier="stun" strength="100" />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb" delay="6.5" reload="6.5">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="bonecut" strength="100" />
+<Affliction identifier="stun" strength="100" />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="stem" type="Contained" />
+<RequiredItem items="autodocstem" type="Contained" />
+<Conditional stemaugment="lt 1" />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb" delay="7.5" reload="7.5" comparison="And">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="stun" strength="100" />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="huskstinger" type="Contained" />
+<RequiredItem items="autodocstinger" type="Contained" />
+<Affliction identifier="huskinfection" strength="9999" />
+<Remove />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Character" comparison="And" delay="7.5">
+<Conditional IsDead="true" />
+<RequiredItem items="autodocrevival" type="Contained" />
+<RequiredItem items="revivalimplantsyringe" type="Contained" />
+<Sound file="Mods/STEM/aedshock.ogg" range="1500" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Character" setvalue="true" IsDead="false" delay="10.5" comparison="And">
+<Conditional IsDead="true" />
+<RequiredItem items="autodocrevival" type="Contained" />
+<RequiredItem items="revivalimplantsyringe" type="Contained" />
+<ReduceAffliction identifier="damage" amount="9999" />
+<ReduceAffliction identifier="bloodloss" amount="9999" />
+<Affliction identifier="stun" amount="9999" />
+<Affliction identifier="revivalimplanttakeover" amount="9999" />
+<ReduceAffliction identifier="damage" amount="9999" />
+<ReduceAffliction identifier="bloodloss" amount="9999" />
+<Affliction identifier="stun" amount="9999" />
+<Affliction identifier="revivalimplanttakeover" amount="9999" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Character" setvalue="true" IsDead="false" delay="10.5" comparison="And">
+<Conditional IsDead="true" />
+<RequiredItem items="autodocrevival" type="Contained" />
+<RequiredItem items="revivalimplantsyringe" type="Contained" />
+<ReduceAffliction identifier="damage" amount="9999" />
+<ReduceAffliction identifier="bloodloss" amount="9999" />
+<Affliction identifier="stun" amount="9999" />
+<Affliction identifier="revivalimplanttakeover" amount="9999" />
+<ReduceAffliction identifier="damage" amount="9999" />
+<ReduceAffliction identifier="bloodloss" amount="9999" />
+<Affliction identifier="stun" amount="9999" />
+<Affliction identifier="revivalimplanttakeover" amount="9999" />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Character" comparison="And" delay="7.5">
+<Conditional IsDead="true" />
+<RequiredItem items="autodocrevival" type="Contained" />
+<RequiredItem items="huskstinger" type="Contained" />
+<Sound file="Mods/STEM/aedshock.ogg" range="1500" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Character" setvalue="true" IsDead="false" delay="10.5" comparison="And">
+<Conditional IsDead="true" />
+<RequiredItem items="autodocrevival" type="Contained" />
+<RequiredItem items="huskstinger" type="Contained" />
+<ReduceAffliction identifier="damage" amount="9999" />
+<ReduceAffliction identifier="bloodloss" amount="9999" />
+<Affliction identifier="stun" amount="9999" />
+<Affliction identifier="revivalimplanttakeover" amount="9999" />
+<ReduceAffliction identifier="damage" amount="9999" />
+<ReduceAffliction identifier="bloodloss" amount="9999" />
+<Affliction identifier="stun" amount="9999" />
+<Affliction identifier="revivalimplanttakeover" amount="9999" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Character" setvalue="true" IsDead="false" delay="10.5" comparison="And">
+<Conditional IsDead="true" />
+<RequiredItem items="autodocrevival" type="Contained" />
+<RequiredItem items="huskstinger" type="Contained" />
+<ReduceAffliction identifier="damage" amount="9999" />
+<ReduceAffliction identifier="bloodloss" amount="9999" />
+<Affliction identifier="stun" amount="9999" />
+<Affliction identifier="huskinfection" amount="9999" />
+<ReduceAffliction identifier="damage" amount="9999" />
+<ReduceAffliction identifier="bloodloss" amount="9999" />
+<Affliction identifier="stun" amount="9999" />
+<Affliction identifier="huskinfection" amount="9999" />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="tonguse" strength="100" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="autodocheartremoval" type="Contained" />
+<Affliction identifier="heartremoved" strength="100" />
+<SpawnItem spawnposition="This" identifier="humanheart" />
+<Remove />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="tonguse" strength="100" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="autodocthroatremoval" type="Contained" />
+<Affliction identifier="throatremoved" strength="9999" />
+<Affliction identifier="throatremoved" strength="9999" />
+<Affliction identifier="throatremoved" strength="9999" />
+<Affliction identifier="throatremoved" strength="9999" />
+<SpawnItem spawnposition="This" identifier="humanthroatfresh" />
+<Remove />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="huskeggs" type="Contained" />
+<RequiredItem items="autodoceggs" type="Contained" />
+<Affliction identifier="huskinfection" strength="65" />
+<Remove />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="humanheart" type="Contained" />
+<RequiredItem items="autodocheartreplace" type="Contained" />
+<ReduceAffliction identifier="heartremoved" strength="9999" />
+<ReduceAffliction identifier="heartremoved" strength="9999" />
+<ReduceAffliction identifier="heartremoved" strength="9999" />
+<ReduceAffliction identifier="heartremoved" strength="9999" />
+<ReduceAffliction identifier="oxygenlow" strength="1000" />
+<ReduceAffliction identifier="bloodloss" strength="1000" />
+<Remove />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="humanheart" type="Contained" />
+<RequiredItem items="autodocheartreplace" type="Contained" />
+<ReduceAffliction identifier="heartremoved" strength="9999" />
+<ReduceAffliction identifier="heartremoved" strength="9999" />
+<ReduceAffliction identifier="heartremoved" strength="9999" />
+<ReduceAffliction identifier="heartremoved" strength="9999" />
+<ReduceAffliction identifier="oxygenlow" strength="1000" />
+<ReduceAffliction identifier="bloodloss" strength="1000" />
+<Remove />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And" speechImpediment="-100.0">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="humanthroat" type="Contained" />
+<RequiredItem items="autodocthroatreplace" type="Contained" />
+<ReduceAffliction identifier="throatremoved" strength="9999" />
+<ReduceAffliction identifier="throatremoved" strength="9999" />
+<ReduceAffliction identifier="throatremoved" strength="9999" />
+<ReduceAffliction identifier="throatremoved" strength="9999" />
+<Remove />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And" speechImpediment="-100.0">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="humanthroatfresh" type="Contained" />
+<RequiredItem items="autodocthroatreplace" type="Contained" />
+<ReduceAffliction identifier="throatremoved" strength="9999" />
+<ReduceAffliction identifier="throatremoved" strength="9999" />
+<ReduceAffliction identifier="throatremoved" strength="9999" />
+<ReduceAffliction identifier="throatremoved" strength="9999" />
+<ReduceAffliction identifier="oxygenlow" strength="1000" />
+<Remove />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And" speechImpediment="-100.0">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="humanthroatfresh" type="Contained" />
+<RequiredItem items="autodocthroatreplace" type="Contained" />
+<ReduceAffliction identifier="throatremoved" strength="9999" />
+<ReduceAffliction identifier="throatremoved" strength="9999" />
+<ReduceAffliction identifier="throatremoved" strength="9999" />
+<ReduceAffliction identifier="throatremoved" strength="9999" />
+<ReduceAffliction identifier="oxygenlow" strength="1000" />
+<Remove />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="tonguse" strength="100" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="autodocstingerremoval" type="Contained" />
+<Conditional huskinfection="gte 65" />
+<ReduceAffliction identifier="huskinfection" amount="9999" />
+<ReduceAffliction identifier="huskinfection" amount="9999" />
+<ReduceAffliction identifier="huskinfection" amount="9999" />
+<ReduceAffliction identifier="huskinfection" amount="9999" />
+<SpawnItem spawnposition="This" identifier="huskstinger" />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Character" delay="0.4" comparison="And">
+<Conditional speciesname="eq humanhusk" />
+<Conditional speciesname="humanhusk" />
+<RequiredItem items="autodocstingerremoval" type="Contained" />
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="tonguse" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<SpawnItem spawnposition="This" identifier="huskstinger" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="1.0" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Character" delay="0.4" comparison="And">
+<Conditional speciesname="eq husk" />
+<Conditional speciesname="husk" />
+<RequiredItem items="autodocstingerremoval" type="Contained" />
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="tonguse" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<SpawnItem spawnposition="ThisInventory" identifier="huskstinger" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="1.0" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="tonguse" strength="100" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="autodocstingerremoval" type="Contained" />
+<Conditional speciesname="eq humanhusk" />
+<Conditional speciesname="humanhusk" />
+<Affliction identifier="organdamage" amount="9999" />
+<Affliction identifier="organdamage" amount="9999" />
+<Affliction identifier="organdamage" amount="9999" />
+<Affliction identifier="organdamage" amount="9999" />
+<SpawnItem spawnposition="This" identifier="huskstinger" />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="tonguse" strength="100" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="autodocstingerremoval" type="Contained" />
+<Conditional speciesname="eq husk" />
+<Conditional speciesname="husk" />
+<Affliction identifier="organdamage" amount="9999" />
+<Affliction identifier="organdamage" amount="9999" />
+<Affliction identifier="organdamage" amount="9999" />
+<Affliction identifier="organdamage" amount="9999" />
+<SpawnItem spawnposition="This" identifier="huskstinger" />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="uex" type="Contained" />
+<RequiredItem items="autodocexplosivetimed" type="Contained" />
+<Affliction identifier="explosiveimplanttimed" strength="1" />
+<Remove />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="9" reload="9" comparison="And">
+<RequiredItem items="stem" type="Contained" />
+<RequiredItem items="autodocstem" type="Contained" />
+<Conditional stemaugment="lt 1" />
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="stemaugment" strength="5" />
+<Affliction identifier="stun" strength="100" />
+<ReduceAffliction identifier="firstincision" amount="1000" />
+<ReduceAffliction identifier="retractskin" amount="1000" />
+<ReduceAffliction identifier="clampbleeders" amount="1000" />
+<ReduceAffliction identifier="bonecut" amount="1000" />
+<Affliction identifier="stitches" strength="100" />
+<Sound file="Content/Sounds/Damage/Gore1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/Gore2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/Gore3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/Gore4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/Gore5.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb" delay="9" reload="9" comparison="And">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="stun" strength="100" />
+<ReduceAffliction identifier="firstincision" amount="1000" />
+<ReduceAffliction identifier="retractskin" amount="1000" />
+<ReduceAffliction identifier="clampbleeders" amount="1000" />
+<ReduceAffliction identifier="bonecut" amount="1000" />
+<Affliction identifier="stitches" strength="100" />
+<Sound file="Content/Sounds/Damage/Gore1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/Gore2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/Gore3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/Gore4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/Gore5.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="This" delay="10" reload="10">
+<Remove />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+</MeleeWeapon>
+</Item>
+
+<Item name="Autosurgeon Mk. 2" identifier="autodoc2" category="Equipment" cargocontaineridentifier="chemicalcrate" Tags="smallitem,medical,surgery" description="A complicated array of surgical instruments and electronics capable of performing surgical procedures in 10 seconds. It latches on to the patient when applied, leaving the bag empty. Can be used to extract husk parasites. Four uses." useinhealthinterface="True" scale="1.0">
+<PreferredContainer primary="toxcontainer" spawnprobability="0.2"/>
+<PreferredContainer primary="locker"/>
+<Fabricate suitablefabricators="medicalfabricator" requiredtime="45">
+<RequiredSkill identifier="electrical" level="25" />
+<RequiredSkill identifier="medical" level="25" />
+<RequiredItem identifier="steel" />
+<RequiredItem identifier="titaniumaluminiumalloy" />
+<RequiredItem identifier="fpgacircuit" />
+<RequiredItem identifier="copper" />
+<RequiredItem identifier="aluminium" />
+</Fabricate>
+<Price baseprice="3500" soldeverywhere="true">
+<Price locationtype="outpost" multiplier="1.2" sold="false"/>
+<Price locationtype="city" multiplier="1.3" sold="false"/>
+<Price locationtype="research" multiplier="1" sold="true" minavailable="1"/>
+<Price locationtype="military" multiplier="1.2" sold="false"/>
+<Price locationtype="mine" multiplier="1.3" sold="false"/>
+</Price>
+<InventoryIcon texture="Mods/STEM/medkit.png" sourcerect="8,32,51,23" origin="0.5,0.6" />
+<Sprite texture="Mods/STEM/medkit.png" sourcerect="8,32,51,23" origin="0.5,0.5" />
+<Body width="90" height="60" density="20" />
+<MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="5,0" handle1="-5,0" holdangle="10" reload="15.0">
+<ItemContainer capacity="2" hideitems="true">
+<Containable items="stem,revivalimplantsyringe,smallitem,medical,huskstinger,autodoc" />
+</ItemContainer>
+<RequiredSkill identifier="medical" level="5" />
+<StatusEffect type="OnUse" target="This" Condition="-100.0" disabledeltatime="true" />
+<StatusEffect type="OnUse" target="Limb" delay="4" reload="3">
+<Affliction identifier="lacerations" strength="1" />
+<Affliction identifier="bleeding" strength="1" />
+<Affliction identifier="firstincision" strength="100" />
+<Affliction identifier="stun" strength="100" />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb" delay="5.5" reload="5.5">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="retractskin" strength="100" />
+<Affliction identifier="stun" strength="100" />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb" delay="6.5" reload="6.5">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="bonecut" strength="100" />
+<Affliction identifier="stun" strength="100" />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="stem" type="Contained" />
+<RequiredItem items="autodocstem" type="Contained" />
+<Conditional stemaugment="lt 1" />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb" delay="7.5" reload="7.5" comparison="And">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="stun" strength="100" />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="huskstinger" type="Contained" />
+<RequiredItem items="autodocstinger" type="Contained" />
+<Affliction identifier="huskinfection" strength="9999" />
+<Remove />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Character" comparison="And" delay="7.5">
+<Conditional IsDead="true" />
+<RequiredItem items="autodocrevival" type="Contained" />
+<RequiredItem items="revivalimplantsyringe" type="Contained" />
+<Sound file="Mods/STEM/aedshock.ogg" range="1500" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Character" setvalue="true" IsDead="false" delay="10.5" comparison="And">
+<Conditional IsDead="true" />
+<RequiredItem items="autodocrevival" type="Contained" />
+<RequiredItem items="revivalimplantsyringe" type="Contained" />
+<ReduceAffliction identifier="damage" amount="9999" />
+<ReduceAffliction identifier="bloodloss" amount="9999" />
+<Affliction identifier="stun" amount="9999" />
+<Affliction identifier="revivalimplanttakeover" amount="9999" />
+<ReduceAffliction identifier="damage" amount="9999" />
+<ReduceAffliction identifier="bloodloss" amount="9999" />
+<Affliction identifier="stun" amount="9999" />
+<Affliction identifier="revivalimplanttakeover" amount="9999" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Character" setvalue="true" IsDead="false" delay="10.5" comparison="And">
+<Conditional IsDead="true" />
+<RequiredItem items="autodocrevival" type="Contained" />
+<RequiredItem items="revivalimplantsyringe" type="Contained" />
+<ReduceAffliction identifier="damage" amount="9999" />
+<ReduceAffliction identifier="bloodloss" amount="9999" />
+<Affliction identifier="stun" amount="9999" />
+<Affliction identifier="revivalimplanttakeover" amount="9999" />
+<ReduceAffliction identifier="damage" amount="9999" />
+<ReduceAffliction identifier="bloodloss" amount="9999" />
+<Affliction identifier="stun" amount="9999" />
+<Affliction identifier="revivalimplanttakeover" amount="9999" />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Character" comparison="And" delay="7.5">
+<Conditional IsDead="true" />
+<RequiredItem items="autodocrevival" type="Contained" />
+<RequiredItem items="huskstinger" type="Contained" />
+<Sound file="Mods/STEM/aedshock.ogg" range="1500" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Character" setvalue="true" IsDead="false" delay="10.5" comparison="And">
+<Conditional IsDead="true" />
+<RequiredItem items="autodocrevival" type="Contained" />
+<RequiredItem items="huskstinger" type="Contained" />
+<ReduceAffliction identifier="damage" amount="9999" />
+<ReduceAffliction identifier="bloodloss" amount="9999" />
+<Affliction identifier="stun" amount="9999" />
+<Affliction identifier="revivalimplanttakeover" amount="9999" />
+<ReduceAffliction identifier="damage" amount="9999" />
+<ReduceAffliction identifier="bloodloss" amount="9999" />
+<Affliction identifier="stun" amount="9999" />
+<Affliction identifier="revivalimplanttakeover" amount="9999" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Character" setvalue="true" IsDead="false" delay="10.5" comparison="And">
+<Conditional IsDead="true" />
+<RequiredItem items="autodocrevival" type="Contained" />
+<RequiredItem items="huskstinger" type="Contained" />
+<ReduceAffliction identifier="damage" amount="9999" />
+<ReduceAffliction identifier="bloodloss" amount="9999" />
+<Affliction identifier="stun" amount="9999" />
+<Affliction identifier="huskinfection" amount="9999" />
+<ReduceAffliction identifier="damage" amount="9999" />
+<ReduceAffliction identifier="bloodloss" amount="9999" />
+<Affliction identifier="stun" amount="9999" />
+<Affliction identifier="huskinfection" amount="9999" />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="tonguse" strength="100" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="autodocheartremoval" type="Contained" />
+<Affliction identifier="heartremoved" strength="100" />
+<SpawnItem spawnposition="This" identifier="humanheart" />
+<Remove />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="tonguse" strength="100" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="autodocthroatremoval" type="Contained" />
+<Affliction identifier="throatremoved" strength="9999" />
+<Affliction identifier="throatremoved" strength="9999" />
+<Affliction identifier="throatremoved" strength="9999" />
+<Affliction identifier="throatremoved" strength="9999" />
+<SpawnItem spawnposition="This" identifier="humanthroatfresh" />
+<Remove />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="huskeggs" type="Contained" />
+<RequiredItem items="autodoceggs" type="Contained" />
+<Affliction identifier="huskinfection" strength="65" />
+<Remove />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="humanheart" type="Contained" />
+<RequiredItem items="autodocheartreplace" type="Contained" />
+<ReduceAffliction identifier="heartremoved" strength="9999" />
+<ReduceAffliction identifier="heartremoved" strength="9999" />
+<ReduceAffliction identifier="heartremoved" strength="9999" />
+<ReduceAffliction identifier="heartremoved" strength="9999" />
+<ReduceAffliction identifier="oxygenlow" strength="1000" />
+<ReduceAffliction identifier="bloodloss" strength="1000" />
+<Remove />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="humanheart" type="Contained" />
+<RequiredItem items="autodocheartreplace" type="Contained" />
+<ReduceAffliction identifier="heartremoved" strength="9999" />
+<ReduceAffliction identifier="heartremoved" strength="9999" />
+<ReduceAffliction identifier="heartremoved" strength="9999" />
+<ReduceAffliction identifier="heartremoved" strength="9999" />
+<ReduceAffliction identifier="oxygenlow" strength="1000" />
+<ReduceAffliction identifier="bloodloss" strength="1000" />
+<Remove />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And" speechImpediment="-100.0">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="humanthroat" type="Contained" />
+<RequiredItem items="autodocthroatreplace" type="Contained" />
+<ReduceAffliction identifier="throatremoved" strength="9999" />
+<ReduceAffliction identifier="throatremoved" strength="9999" />
+<ReduceAffliction identifier="throatremoved" strength="9999" />
+<ReduceAffliction identifier="throatremoved" strength="9999" />
+<Remove />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And" speechImpediment="-100.0">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="humanthroatfresh" type="Contained" />
+<RequiredItem items="autodocthroatreplace" type="Contained" />
+<ReduceAffliction identifier="throatremoved" strength="9999" />
+<ReduceAffliction identifier="throatremoved" strength="9999" />
+<ReduceAffliction identifier="throatremoved" strength="9999" />
+<ReduceAffliction identifier="throatremoved" strength="9999" />
+<ReduceAffliction identifier="oxygenlow" strength="1000" />
+<Remove />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And" speechImpediment="-100.0">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="humanthroatfresh" type="Contained" />
+<RequiredItem items="autodocthroatreplace" type="Contained" />
+<ReduceAffliction identifier="throatremoved" strength="9999" />
+<ReduceAffliction identifier="throatremoved" strength="9999" />
+<ReduceAffliction identifier="throatremoved" strength="9999" />
+<ReduceAffliction identifier="throatremoved" strength="9999" />
+<ReduceAffliction identifier="oxygenlow" strength="1000" />
+<Remove />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="tonguse" strength="100" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="autodocstingerremoval" type="Contained" />
+<Conditional huskinfection="gte 65" />
+<ReduceAffliction identifier="huskinfection" amount="9999" />
+<ReduceAffliction identifier="huskinfection" amount="9999" />
+<ReduceAffliction identifier="huskinfection" amount="9999" />
+<ReduceAffliction identifier="huskinfection" amount="9999" />
+<SpawnItem spawnposition="This" identifier="huskstinger" />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Character" delay="0.4" comparison="And">
+<Conditional speciesname="eq humanhusk" />
+<Conditional speciesname="humanhusk" />
+<RequiredItem items="autodocstingerremoval" type="Contained" />
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="tonguse" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<SpawnItem spawnposition="This" identifier="huskstinger" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="1.0" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Character" delay="0.4" comparison="And">
+<Conditional speciesname="eq husk" />
+<Conditional speciesname="husk" />
+<RequiredItem items="autodocstingerremoval" type="Contained" />
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="tonguse" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<Affliction identifier="organdamage" strength="9999" />
+<SpawnItem spawnposition="ThisInventory" identifier="huskstinger" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="1.0" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="tonguse" strength="100" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="autodocstingerremoval" type="Contained" />
+<Conditional speciesname="eq humanhusk" />
+<Conditional speciesname="humanhusk" />
+<Affliction identifier="organdamage" amount="9999" />
+<Affliction identifier="organdamage" amount="9999" />
+<Affliction identifier="organdamage" amount="9999" />
+<Affliction identifier="organdamage" amount="9999" />
+<SpawnItem spawnposition="This" identifier="huskstinger" />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="tonguse" strength="100" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="autodocstingerremoval" type="Contained" />
+<Conditional speciesname="eq husk" />
+<Conditional speciesname="husk" />
+<Affliction identifier="organdamage" amount="9999" />
+<Affliction identifier="organdamage" amount="9999" />
+<Affliction identifier="organdamage" amount="9999" />
+<Affliction identifier="organdamage" amount="9999" />
+<SpawnItem spawnposition="This" identifier="huskstinger" />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="7.5" reload="7.5" comparison="And">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="stun" strength="100" />
+<RequiredItem items="uex" type="Contained" />
+<RequiredItem items="autodocexplosivetimed" type="Contained" />
+<Affliction identifier="explosiveimplanttimed" strength="1" />
+<Remove />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb,Contained" delay="9" reload="9" comparison="And">
+<RequiredItem items="stem" type="Contained" />
+<RequiredItem items="autodocstem" type="Contained" />
+<Conditional stemaugment="lt 1" />
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="stemaugment" strength="5" />
+<Affliction identifier="stun" strength="100" />
+<ReduceAffliction identifier="firstincision" amount="1000" />
+<ReduceAffliction identifier="retractskin" amount="1000" />
+<ReduceAffliction identifier="clampbleeders" amount="1000" />
+<ReduceAffliction identifier="bonecut" amount="1000" />
+<Affliction identifier="stitches" strength="100" />
+<Sound file="Content/Sounds/Damage/Gore1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/Gore2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/Gore3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/Gore4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/Gore5.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Limb" delay="9" reload="9" comparison="And">
+<Affliction identifier="lacerations" strength="2" />
+<Affliction identifier="bleeding" strength="2" />
+<Affliction identifier="stun" strength="100" />
+<ReduceAffliction identifier="firstincision" amount="1000" />
+<ReduceAffliction identifier="retractskin" amount="1000" />
+<ReduceAffliction identifier="clampbleeders" amount="1000" />
+<ReduceAffliction identifier="bonecut" amount="1000" />
+<Affliction identifier="stitches" strength="100" />
+<Sound file="Content/Sounds/Damage/Gore1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/Gore2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/Gore3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/Gore4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/Gore5.ogg" range="500" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="This" delay="10" reload="10">
+<Remove />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+</MeleeWeapon>
+</Item>
+
+<Item name="Automated External Defibrilator" identifier="aed" category="Equipment" cargocontaineridentifier="chemicalcrate" Tags="smallitem,medical,surgery" description="A device which delivers a controlled shock in order to revive the recently deceased." useinhealthinterface="True" scale="1.0">
+<PreferredContainer primary="toxcontainer" spawnprobability="0.2"/>
+<PreferredContainer primary="locker"/>
+<Fabricate suitablefabricators="medicalfabricator" requiredtime="45">
+<RequiredSkill identifier="electrical" level="25" />
+<RequiredSkill identifier="medical" level="25" />
+<RequiredItem identifier="steel" />
+<RequiredItem identifier="titaniumaluminiumalloy" />
+<RequiredItem identifier="fpgacircuit" />
+<RequiredItem identifier="copper" />
+<RequiredItem identifier="aluminium" />
+</Fabricate>
+<Price baseprice="1500" soldeverywhere="true">
+<Price locationtype="outpost" multiplier="1.2" sold="false"/>
+<Price locationtype="city" multiplier="1.3" sold="false"/>
+<Price locationtype="research" multiplier="1" sold="true" minavailable="1"/>
+<Price locationtype="military" multiplier="1.2" sold="false"/>
+<Price locationtype="mine" multiplier="1.3" sold="false"/>
+</Price>
+<InventoryIcon texture="Mods/STEM/medkit.png" sourcerect="8,32,51,23" origin="0.5,0.6" />
+<Sprite texture="Mods/STEM/medkit.png" sourcerect="8,32,51,23" origin="0.5,0.5" />
+<Body width="90" height="60" density="20" />
+<MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="5,0" handle1="-5,0" holdangle="10" reload="9.0">
+<ItemContainer capacity="1" hideitems="true">
+<Containable items="batterycell" />
+</ItemContainer>
+<RequiredSkill identifier="medical" level="20" />
+<StatusEffect type="OnUse" target="Character" setvalue="true" IsDead="false" delay="1.25" comparison="And">
+<Conditional isdead="false" />
+<RequiredItem items="batterycell" type="Contained" />  
+<ParticleEmitter particle="bloodsplash" particlespersecond="10" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Character" comparison="And">
+<Conditional isdead="false" />
+<RequiredItem items="batterycell" type="Contained" />
+<Sound file="Mods/STEM/aedshock.ogg" range="1500" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Character" setvalue="true" IsDead="false" delay="3.0" comparison="And">
+<Conditional isdead="false" />
+<RequiredItem items="batterycell" type="Contained" />
+<ReduceAffliction identifier="damage" amount="100" />
+<ReduceAffliction identifier="bloodloss" amount="100" />
+<ReduceAffliction identifier="stun" amount="25" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Character" setvalue="true" IsDead="false" delay="3.2" comparison="And">
+<Conditional isdead="false" />
+<RequiredItem items="batterycell" type="Contained" />
+<ReduceAffliction identifier="damage" amount="100" />
+<ReduceAffliction identifier="bloodloss" amount="100" />
+<ReduceAffliction identifier="stun" amount="25" />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="This" Condition="-25.0" disabledeltatime="true" />
+<StatusEffect type="OnUse" target="Character" targetlimb="Torso" setvalue="true" IsDead="false" delay="1.25" comparison="And">
+<Conditional IsDead="true" />
+<RequiredItem items="batterycell" type="Contained" />  
+<Revive />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+<ParticleEmitter particle="bloodsplash" particlespersecond="50" scalemin="0.5" scalemax="0.75" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Character" comparison="And">
+<Conditional IsDead="true" />
+<RequiredItem items="batterycell" type="Contained" />
+<Sound file="Mods/STEM/aedshock.ogg" range="1500" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Character" setvalue="true" IsDead="false" delay="3.0" comparison="And">
+<Conditional IsDead="true" />
+<RequiredItem items="batterycell" type="Contained" />
+<ReduceAffliction identifier="damage" amount="9999" />
+<ReduceAffliction identifier="bloodloss" amount="9999" />
+<Affliction identifier="stun" amount="9999" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Character" setvalue="true" IsDead="false" delay="3.2" comparison="And">
+<Conditional IsDead="true" />
+<RequiredItem items="batterycell" type="Contained" />
+<ReduceAffliction identifier="damage" amount="9999" />
+<ReduceAffliction identifier="bloodloss" amount="9999" />
+<Affliction identifier="stun" amount="9999" />
+<Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+<Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Character" setvalue="true" IsDead="false" delay="3.4" comparison="And">
+<Conditional stun="gte 5" />
+<Affliction identifier="decay" amount="25" />
+<RequiredItem items="batterycell" type="Contained" />
+</StatusEffect>
+<StatusEffect type="OnUse" target="Contained" delay="3.5" Condition="-50.0">
+<RequiredItem items="batterycell" type="Contained" />
+</StatusEffect>
+</MeleeWeapon>
+</Item>
+
+</Items>

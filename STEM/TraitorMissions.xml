@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TraitorMissions>
+	
+<TraitorMission identifier="huskimplant">
+    <Icon texture="Content/UI/MissionIcons.png" sourcerect="512,0,256,256" color="200,0,0,255"/>
+    <StartInfoText id="huskimplant_traitormissionstartinfotext"/>
+		
+    <Objective>
+      <EndMessageFailure id="huskimplant_objectivefailmessage1"/>
+      <EndMessageSuccess id="huskimplant_objectivesuccessmessage1"/>
+      <StartMessage id="huskimplant_traitorobjectivestartmessage1"/>
+      <Goal type="finditem" identifier="autodoc,autodochuskstinger,huskstinger,antagidcard" preferNew="true" allowNew="true" allowExisting="false" allowedContainers="steelcabinet,suppliescabinet,mediumsteelcabinet">
+        <InfoText id="huskimplant_goalinfotext_1"/>
+      </Goal>
+    </Objective>
+
+    <Objective>
+      <EndMessageFailure id="huskimplant_objectivefailmessage2"/>
+      <EndMessageSuccess id="huskimplant_objectivesuccessmessage2"/>
+      <StartMessage id="huskimplant_traitorobjectivestartmessage2"/>
+      <Goal type="sabotage" tag="reactor" threshold="1">
+        <InfoText id="huskimplant_goalinfotext_2"/>
+      </Goal>
+    </Objective>
+
+    <Objective>
+      <EndMessageFailure id="huskimplant_objectivefailmessage3"/>
+      <EndMessageSuccess id="huskimplant_objectivesuccessmessage3"/>
+      <StartMessage id="huskimplant_traitorobjectivestartmessage3"/>
+      <Goal type="injectpoison" poison="autosurgeon" affliction="huskinfection" targetpercentage="100">
+        <InfoText id="huskimplant_goalinfotext_3"/>
+      </Goal>
+    </Objective>
+    
+    <Objective>
+      <EndMessageFailure id="huskimplant_objectivefailmessage4"/>
+      <EndMessageSuccess id="huskimplant_objectivesuccessmessage4"/>
+      <StartMessage id="huskimplant_traitorobjectivestartmessage4"/>
+      <Goal type="reachdistancefromsub" distance="250">
+        <InfoText id="huskimplant_goalinfotext_4"/>
+      </Goal>
+    </Objective>
+    
+  </TraitorMission>
+  
+
+
+</TraitorMissions>

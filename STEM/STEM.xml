@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Items>
+
+<Item name="STEM Implant" identifier="stem" category="Material" cargocontaineridentifier="chemicalcrate" Tags="smallitem,chem,medical" description="This syringe gives near superhuman abilities, at the cost of total vulnerability to hackers." useinhealthinterface="False" scale="0.5">
+<Upgrade gameversion="0.10.0.0" scale="0.5" />
+<PreferredContainer primary="toxcontainer" spawnprobability="0.2"/>
+<PreferredContainer primary="locker"/>
+<!--TODO: Availability-->
+<Price baseprice="10000" soldeverywhere="false">
+<Price locationtype="outpost" multiplier="1.2" sold="false"/>
+<Price locationtype="city" multiplier="1.3" sold="false"/>
+<Price locationtype="research" multiplier="1" sold="true" minavailable="1"/>
+<Price locationtype="military" multiplier="1.2" sold="false"/>
+<Price locationtype="mine" multiplier="1.3" sold="false"/>
+</Price>
+<InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="832,448,64,64" origin="0.5,0.5" />
+<Sprite texture="Content/Items/CreatureLoot/CreatureLoot.png" sourcerect="0,186,38,70" depth="0.6" origin="0.5,0.5" />
+<Body width="35" height="70" density="20" />
+<MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="5,0" handle1="-5,0" holdangle="10" reload="1.0">
+<StatusEffect type="OnUse" target="This" Condition="-100.0" disabledeltatime="true" />
+<StatusEffect type="OnUse" target="Character">
+<Affliction identifier="internaldamage" amount="1" />
+</StatusEffect>
+<StatusEffect type="OnBroken" target="This">
+<Remove />
+</StatusEffect>
+</MeleeWeapon>
+</Item>
+
+<Item name="Augment Cleansing Nanites" identifier="stemremover" category="Material" cargocontaineridentifier="chemicalcrate" Tags="smallitem,chem,medical" description="Contains a specialized blend of nanites which will remove any augments from the body." useinhealthinterface="true" scale="0.5">
+<Upgrade gameversion="0.10.0.0" scale="0.5" />
+<PreferredContainer primary="toxcontainer" spawnprobability="0.2"/>
+<PreferredContainer primary="locker"/>
+<!--TODO: Availability-->
+<Price baseprice="1000" soldeverywhere="false">
+<Price locationtype="outpost" multiplier="1.2" sold="false"/>
+<Price locationtype="city" multiplier="1.3" sold="false"/>
+<Price locationtype="research" multiplier="1" sold="true" minavailable="1"/>
+<Price locationtype="military" multiplier="1.2" sold="false"/>
+<Price locationtype="mine" multiplier="1.3" sold="false"/>
+</Price>
+<InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="832,448,64,64" origin="0.5,0.5" />
+<Sprite texture="Content/Items/CreatureLoot/CreatureLoot.png" sourcerect="0,186,38,70" depth="0.6" origin="0.5,0.5" />
+<Body width="35" height="70" density="20" />
+<MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="5,0" handle1="-5,0" holdangle="10" reload="1.0">
+<StatusEffect type="OnUse" target="This" Condition="-100.0" disabledeltatime="true" />
+<StatusEffect type="OnUse" target="Character">
+<!-- HuskInfectionState must be less than 0.01 so you can't speed up the infection -->
+<Conditional stemaugment="gt 5" />
+<Affliction identifier="stemaugmentremoval" amount="600" />
+</StatusEffect>
+<!-- Remove the item when fully used -->
+<StatusEffect type="OnBroken" target="This" condition="100.0" delay="30" />
+</MeleeWeapon>
+</Item>
+
+</Items>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sounds>
+
+  <music file="Mods/STEM/thunderdome.ogg" type="menu" continuefromprevioustime="true"/>
+  
+  <ambient file="Content/Sounds/Ambient/Ambient1.ogg"/>
+  
+</sounds>

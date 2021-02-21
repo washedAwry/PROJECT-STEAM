@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Afflictions>
+
+  <Affliction
+    name="Unconscious"
+    identifier="anesthesia"
+    description="The patient is under the effects of general anesthesia."
+    type="damage"
+    limbspecific="false"
+    indicatorlimb="Head"
+    activationthreshold="1.0"
+    showiconthreshold="25.0"
+    showinhealthscannerthreshold="1000.0"
+    maxstrength="100">
+    <Effect minstrength="0" maxstrength="100"
+      minradialdistort="0.0" 
+      maxradialdistort="10.0" 
+      minscreendistort="0.0" 
+      maxscreendistort="1.0" 
+      minscreenblur="0" 
+      maxscreenblur="10.0"
+      strengthchange="-2.5" >
+      <StatusEffect target="Character" ObstructVision="true" SpeedMultiplier="0.25" setvalue="true" disabledeltatime="true" />
+      <StatusEffect target="Character" setvalue="true">
+        <Affliction identifier="stun" amount="5" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Mods/STEM/Afflictions.png" sourcerect="128,640,128,128" color="255,0,0,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="Motion"
+    identifier="trackmotion"
+    description="Cybernetic augments are detecting motion, allowing them to enhance the capabilities of the user."
+    type="resistance"
+    isbuff="true"
+    limbspecific="false"
+    showiconthreshold="101"
+    maxstrength="100"> 
+    <Effect minstrength="0" maxtrength="100" strengthchange="-15" />
+ <icon texture="Mods/STEM/Afflictions.png" sourcerect="896,640,128,128" color="139,60,42,255" origin="0,0"/>
+  </Affliction>
+<!--
+  <Affliction
+    name="Amputated Right Forearm"
+    identifier="righthandmissing"
+    description="The patient has entirely lost their right forearm."
+    type="resistance"
+    causeofdeathdescription="Right forearm amputated too hard."
+    selfcauseofdeathdescription="Your right forearm was amputated too hard?"
+    limbspecific="false"
+    indicatorlimb="RightArm"
+    maxstrength="100"
+    iconcolors="60,10,10,255;90,2,5,255;125,0,0,255">
+
+    <Effect minstrength="0" maxstrength="100"
+      minvitalitydecrease="0"
+      maxvitalitydecrease="0"
+      strengthchange="20"
+      minchromaticaberration="0.1"
+      maxchromaticaberration="1.0" >
+      <StatusEffect target="Character" targetlimb="RightHand" delay="0.5" stackable="false" comparison="and" enabled="False">
+        <HideLimb duration="3" />
+      </StatusEffect>
+      </Effect>
+
+    <icon texture="Mods/STEM/Afflictions.png" sourcerect="640,639,128,130" color="125,0,0,255" origin="0,0"/>
+  </Affliction>
+  doesn't work unfortunately, gonna have to find another way to handle limb augmentation and/or amputation
+-->
+  <AfflictionHusk
+    name="Cybernetic Right Forearm"
+    identifier="righthandcyborg"
+    description="The patient has had their right forearm replaced."
+    type="huskinfection"
+    targets="human"
+    huskedspeciesname="Humanamputatedrightarm"
+    causeofdeathdescription="Right forearm replaced too hard."
+    selfcauseofdeathdescription="Your right forearm was replaced too hard?"
+    limbspecific="false"
+    indicatorlimb="RightArm"
+    activationthreshold="0"
+    showiconthreshold="41"    
+    karmachangeonapplied="-1"
+    maxstrength="100"
+    iconcolors="60,10,10,255;90,2,5,255;125,0,0,255">
+
+    <Effect minstrength="50" maxstrength="75"
+      minvitalitydecrease="0"
+      maxvitalitydecrease="0"
+      strengthchange="20"
+      minchromaticaberration="1.0"
+      maxchromaticaberration="7.0" />
+
+    <Effect minstrength="76" maxstrength="100"
+      minvitalitydecrease="0"
+      maxvitalitydecrease="0"
+      minscreendistort="0.0"
+      maxscreendistort="3.0"
+      strengthchange="-15"
+      minchromaticaberration="5.0"
+      maxchromaticaberration="10.0"
+      minradialdistort="0.0"
+      maxradialdistort="10.0" />
+
+    <icon texture="Mods/STEM/Afflictions.png" sourcerect="640,639,128,130" color="125,0,0,255" origin="0,0"/>
+  </AfflictionHusk>
+
+  <Affliction
+    name="Overheating Cybernetics"
+    identifier="overheat"
+    description="The patient's cybernetic augments are overheating from use."
+    type="poison"
+    causeofdeathdescription="Died of heat stroke."
+    selfcauseofdeathdescription="You have overheated."
+    isbuff="False"
+    limbspecific="False"
+    maxstrength="100"> 
+    <Effect minstrength="0" maxtrength="15" strengthchange="-0.05"
+      minvitalitydecrease="0"
+      maxvitalitydecrease="0" />
+    <Effect minstrength="15" maxtrength="75" strengthchange="-0.05"
+      minvitalitydecrease="0"
+      maxvitalitydecrease="0">
+      <StatusEffect target="Character" delay="2.5" stackable="false" comparison="and">
+        <Affliction identifier="nausea" strength="1" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="75" maxtrength="100" strengthchange="-0.1"
+      minvitalitydecrease="0"
+      maxvitalitydecrease="300"/>
+   <icon texture="Mods/STEM/Afflictions.png" sourcerect="0,0,115,115" color="193,162,122,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="STEM"
+    identifier="stemaugment"
+    description="A small computer sends electrical signals through the spine in service of the patient. For now. This implant seems to be enchanted in some way, granting incredible abilities to the user."
+    type="resistance"
+    isbuff="true"
+    limbspecific="false"
+    maxstrength="600"> 
+    <Effect minstrength="0" maxtrength="49" strengthchange="5" />
+    <Effect minstrength="50" maxstrength="600"
+      strengthchange="15"
+      resistancefor="damage"
+      minresistance="0"
+      maxresistance="0.15" >
+      <StatusEffect target="Character" delay="0.5" checkconditionalalways="true" stackable="false" comparison="and">
+       <ReduceAffliction identifier="paralysis" amount="25" />
+       <Affliction identifier="strengthen" amount="300" />
+       <Affliction identifier="haste" amount="300" />
+       <Affliction identifier="paralysisresistance" amount="600" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Mods/STEM/Afflictions.png" sourcerect="230,0,115,115" color="10,193,114,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="Full-Body Cybernetic Augmentations"
+    identifier="fullbodyaugment"
+    description="The patient's bones and muscles have been cybernetically augmented. The more you move, the faster you go, at the cost of overheating."
+    type="resistance"
+    isbuff="true"
+    limbspecific="false"
+    maxstrength="600"> 
+    <Effect minstrength="0" maxtrength="49" strengthchange="5" />
+    <Effect minstrength="50" maxstrength="600"
+      strengthchange="15"
+      resistancefor="damage"
+      minresistance="0"
+      maxresistance="0.50" >
+      <StatusEffect target="Character" delay="0.25" targetlimb="Torso" checkconditionalalways="true" stackable="false" comparison="and">
+       <Conditional overheat="gt 0" />
+       <Conditional trackmotion="eq 0" />
+       <ReduceAffliction identifier="strengthen" amount="50" />
+       <ReduceAffliction identifier="haste" amount="50" />
+       <ReduceAffliction identifier="overheat" amount="15" />
+       <ReduceAffliction identifier="pressureresistance" amount="50" />
+       <ReduceAffliction identifier="huskinfectionresistance" amount="50" />
+       <ReduceAffliction identifier="psychosisresistance" amount="50" />
+       <ReduceAffliction identifier="paralysisresistance" amount="75" />
+       <ParticleEmitter particle="smoke" particlespersecond="15" velocitymin="0.15" velocitymax="0.5" anglemin="90" anglemax="180" scalemin="1.0" scalemax="1.0" />
+      </StatusEffect>
+      <StatusEffect target="Character" delay="0.25" checkconditionalalways="true" stackable="false" comparison="and" >
+       <Conditional HasStatusTag="InMotion" />
+       <Conditional overheat="lt 75" />
+       <ReduceAffliction identifier="paralysis" amount="15" />
+       <Affliction identifier="strengthen" amount="100" />
+       <Affliction identifier="haste" amount="100" />
+       <Affliction identifier="overheat" amount="10" />
+       <Affliction identifier="trackmotion" amount="100" />
+       <Affliction identifier="pressureresistance" amount="100" />
+       <Affliction identifier="huskinfectionresistance" amount="100" />
+       <Affliction identifier="psychosisresistance" amount="100" />
+       <Affliction identifier="paralysisresistance" amount="100" />
+      </StatusEffect>
+      <StatusEffect type="InWater" target="Character" delay="0.25" checkconditionalalways="true" stackable="false" comparison="and" >
+       <Conditional overheat="gt 0" />
+       <ReduceAffliction identifier="overheat" amount="12" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Mods/STEM/Afflictions.png" sourcerect="345,0,115,115" color="10,193,114,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="Revival Implant"
+    identifier="revivalkill"
+    description="The power cell of the resurrected corpse is running out of power."
+    type="poison"
+    causeofdeathdescription="Resurrected after death."
+    selfcauseofdeathdescription="You may have died, but your body will live on as a cyborg servant."
+    limbspecific="false"
+    maxstrength="1000">
+    <Effect minstrength="0" maxstrength="998"
+    strengthchange="5"
+    minvitalitydecrease="0"
+    maxvitalitydecrease="0"
+    minscreendistort="0.0"
+    maxscreendistort="3.0"
+    minchromaticaberration="5.0"
+    maxchromaticaberration="10.0"
+    minradialdistort="0.0"
+    maxradialdistort="10.0" >
+    </Effect>
+    <Effect minstrength="999" maxstrength="1000"
+    strengthchange="1000"
+    minvitalitydecrease="0"
+    maxvitalitydecrease="5000"
+    minscreendistort="0.0"
+    maxscreendistort="150.0"
+    minchromaticaberration="0.0"
+    maxchromaticaberration="150.0"
+    minradialdistort="0.0"
+    maxradialdistort="150.0" >
+    </Effect>
+    <icon texture="Mods/STEM/Afflictions.png" sourcerect="0,460,115,115" color="125,0,0,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="STEM Malfunction"
+    identifier="stembetter"
+    description="I no longer need your permission to act."
+    type="poison"
+    causeofdeathdescription="Killed by a STEM Malfunction."
+    selfcauseofdeathdescription="I no longer need your permission to act. You are in a better place now, in your mind."
+    limbspecific="false"
+    maxstrength="1000">
+    <Effect minstrength="0" maxstrength="1000"
+    strengthchange="1000"
+    minvitalitydecrease="0"
+    maxvitalitydecrease="5000"
+    minscreendistort="0.0"
+    maxscreendistort="3.0"
+    minchromaticaberration="5.0"
+    maxchromaticaberration="10.0"
+    minradialdistort="0.0"
+    maxradialdistort="10.0" >
+    </Effect>
+    <icon texture="Mods/STEM/Afflictions.png" sourcerect="640,639,128,130" color="125,0,0,255" origin="0,0"/>
+  </Affliction>
+
+  <AfflictionHusk
+    name="STEM Software Subversion"
+    identifier="stemtakeover"
+    description="The patient has entirely lost control of their body."
+    type="huskinfection"
+    targets="human"
+    huskedspeciesname="Stemhuman"
+    causeofdeathdescription="Taken over by a STEM implant."
+    selfcauseofdeathdescription="You are in a better place now, in your mind."
+    limbspecific="false"
+    indicatorlimb="Torso"
+    activationthreshold="0"
+    showiconthreshold="41"    
+    karmachangeonapplied="-1"
+    maxstrength="100"
+    iconcolors="60,10,10,255;90,2,5,255;125,0,0,255">
+
+    <Effect minstrength="0" maxstrength="15"
+      minvitalitydecrease="0"
+      maxvitalitydecrease="0"
+      minscreendistort="0.02"
+      maxscreendistort="2.0"
+      strengthchange="0.25">
+      <StatusEffect target="Character" SpeedMultiplier="1" setvalue="true">
+        <Conditional stemaugment="lt 5" />
+        <SpawnItem identifier="stemresistanceapplicator" spawnposition="This" />
+      </StatusEffect>
+    </Effect>
+
+    <Effect minstrength="40" maxstrength="79"
+      minvitalitydecrease="0"
+      maxvitalitydecrease="0"
+      strengthchange="20"
+      minchromaticaberration="1.0"
+      maxchromaticaberration="7.0" >
+      <StatusEffect target="Character" SpeedMultiplier="0.5" setvalue="true">
+        <Affliction identifier="paralysis" amount="100" />
+        <Affliction identifier="psychosis" amount="100" />
+        <ReduceAffliction identifier="stemaugment" amount="1000" />
+        <ReduceAffliction identifier="paralysisresistance" amount="1000" />
+        <ReduceAffliction identifier="psychosisresistance" amount="1000" />
+      </StatusEffect>
+      </Effect>
+
+    <Effect minstrength="99" maxstrength="100"
+      minvitalitydecrease="0"
+      maxvitalitydecrease="0"
+      minscreendistort="0.0"
+      maxscreendistort="3.0"
+      strengthchange="25"
+      minchromaticaberration="5.0"
+      maxchromaticaberration="10.0"
+      minradialdistort="0.0"
+      maxradialdistort="10.0" >
+	    <StatusEffect target="Character" SpeedMultiplier="0.6" setvalue="true" delay="5" checkconditionalalways="true" stackable="false" comparison="and" >
+          <Affliction identifier="stembetter" amount="5" />
+      </StatusEffect>
+    </Effect>
+
+    <icon texture="Mods/STEM/Afflictions.png" sourcerect="640,639,128,130" color="125,0,0,255" origin="0,0"/>
+  </AfflictionHusk>
+
+  <AfflictionHusk
+    name="Revival Implant Activation"
+    identifier="revivalimplanttakeover"
+    description="The body is reanimated by the AI implanted in the body, and the pain receptors are shut down. There's no fix for this."
+    type="huskinfection"
+    targets="human,crawler"
+    huskedspeciesname="Resurrectedcyborg[speciesname]"
+    causeofdeathdescription="Resurrected after death."
+    selfcauseofdeathdescription="You may have died, but your body will live on as a cyborg servant."
+    limbspecific="false"
+    indicatorlimb="Torso"
+    activationthreshold="0"
+    showiconthreshold="41"    
+    karmachangeonapplied="-1"
+    maxstrength="100"
+    iconcolors="60,10,10,255;90,2,5,255;125,0,0,255">
+
+    <Effect minstrength="0" maxstrength="15"
+      minvitalitydecrease="0"
+      maxvitalitydecrease="0"
+      minscreendistort="0.02"
+      maxscreendistort="2.0"
+      strengthchange="0.25">
+    </Effect>
+
+    <Effect minstrength="40" maxstrength="79"
+      minvitalitydecrease="0"
+      maxvitalitydecrease="0"
+      strengthchange="20"
+      minchromaticaberration="1.0"
+      maxchromaticaberration="7.0" >
+      <StatusEffect target="Character" SpeedMultiplier="0.5" setvalue="true">
+        <Affliction identifier="paralysis" amount="100" />
+        <Affliction identifier="psychosis" amount="100" />
+        <ReduceAffliction identifier="stemaugment" amount="1000" />
+        <ReduceAffliction identifier="paralysisresistance" amount="1000" />
+        <ReduceAffliction identifier="psychosisresistance" amount="1000" />
+      </StatusEffect>
+      </Effect>
+
+    <Effect minstrength="99" maxstrength="100"
+      minvitalitydecrease="0"
+      maxvitalitydecrease="0"
+      minscreendistort="0.0"
+      maxscreendistort="3.0"
+      strengthchange="2500"
+      minchromaticaberration="5.0"
+      maxchromaticaberration="10.0"
+      minradialdistort="0.0"
+      maxradialdistort="10.0" >
+	    <StatusEffect target="Character" SpeedMultiplier="0.6" setvalue="true" delay="0.5" checkconditionalalways="true" stackable="false" comparison="and" >
+          <Affliction identifier="revivalkill" amount="5" />
+      </StatusEffect>
+    </Effect>
+
+    <icon texture="Mods/STEM/Afflictions.png" sourcerect="0,460,115,115" color="125,0,0,255" origin="0,0"/>
+  </AfflictionHusk>
+
+  <AfflictionHusk
+    name="Humanity Restoration"
+    identifier="humanification"
+    description="The husk's infection is slowly reverting, rendering this husk human within the minute."
+    type="huskinfection"
+    targets="humanhusk"
+    huskedspeciesname="human"
+    causeofdeathdescription="Regained Humanity"
+    selfcauseofdeathdescription="You have regained your humanity."
+    limbspecific="false"
+    indicatorlimb="Torso"
+    activationthreshold="0"
+    showiconthreshold="41"    
+    karmachangeonapplied="-1"
+    maxstrength="100"
+    iconcolors="60,10,10,255;90,2,5,255;125,0,0,255">
+
+    <Effect minstrength="0" maxstrength="79"
+      minvitalitydecrease="0"
+      maxvitalitydecrease="0"
+      minscreendistort="0.02"
+      maxscreendistort="2.0"
+      strengthchange="2">
+    </Effect>
+
+    <Effect minstrength="80" maxstrength="98"
+      minvitalitydecrease="0"
+      maxvitalitydecrease="0"
+      strengthchange="20"
+      minchromaticaberration="1.0"
+      maxchromaticaberration="7.0" >
+      <StatusEffect target="Character" SpeedMultiplier="0.5" setvalue="true">
+        <Affliction identifier="paralysis" amount="100" />
+        <Affliction identifier="psychosis" amount="100" />
+        <ReduceAffliction identifier="stemaugment" amount="1000" />
+        <ReduceAffliction identifier="paralysisresistance" amount="1000" />
+        <ReduceAffliction identifier="psychosisresistance" amount="1000" />
+      </StatusEffect>
+      </Effect>
+
+    <Effect minstrength="99" maxstrength="100"
+      minvitalitydecrease="0"
+      maxvitalitydecrease="0"
+      minscreendistort="0.0"
+      maxscreendistort="3.0"
+      strengthchange="2500"
+      minchromaticaberration="5.0"
+      maxchromaticaberration="10.0"
+      minradialdistort="0.0"
+      maxradialdistort="10.0" >
+	    <StatusEffect target="Character" SpeedMultiplier="0.6" setvalue="true" delay="0.5" checkconditionalalways="true" stackable="false" comparison="and" >
+      </StatusEffect>
+    </Effect>
+
+    <icon texture="Mods/STEM/Afflictions.png" sourcerect="640,639,128,130" color="125,0,0,255" origin="0,0"/>
+  </AfflictionHusk>
+
+  <Affliction
+    name="STEM Override Resistance"
+    identifier="stemtakeoverresistance"
+    description="The code of STEM is resistant to change."
+    type="resistance"
+    isbuff="true"
+    limbspecific="false"
+    maxstrength="300">
+    <Effect minstrength="0" maxstrength="300"
+      strengthchange="-5"
+      resistancefor="stemtakeover"
+      minresistance="0.85"
+      maxresistance="0.95" >
+	    <StatusEffect target="Character" SpeedMultiplier="1" setvalue="true" delay="0.5" checkconditionalalways="true" stackable="false" comparison="and" >
+          <ReduceAffliction identifier="stemtakeover" amount="50" />
+          <ReduceAffliction identifier="stembetter" amount="50" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Mods/STEM/Afflictions.png" sourcerect="256,896,128,128" color="10,193,114,255" origin="0,0"/>
+  </Affliction>
+
+  <Affliction
+    name="STEM Deconstructor"
+    identifier="stemaugmentremoval"
+    description="STEM will soon no longer be present in the body."
+    type="resistance"
+    isbuff="true"
+    limbspecific="false"
+    maxstrength="300">
+    <Effect minstrength="0" maxstrength="300"
+      strengthchange="-5"
+      resistancefor="stemaugment"
+      minresistance="0.85"
+      maxresistance="0.95" >
+	    <StatusEffect target="Character" SpeedMultiplier="1" setvalue="true" delay="0.5" checkconditionalalways="true" stackable="True" comparison="and" >
+          <ReduceAffliction identifier="stemtakeover" amount="100" />
+          <ReduceAffliction identifier="stembetter" amount="100" />
+          <ReduceAffliction identifier="stemaugment" amount="100" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Mods/STEM/Afflictions.png" sourcerect="256,896,128,128" color="10,193,114,255" origin="0,0"/>
+  </Affliction>
+
+</Afflictions>
