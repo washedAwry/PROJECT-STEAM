@@ -16,13 +16,13 @@
       minradialdistort="0.0" 
       maxradialdistort="10.0" 
       minscreendistort="0.0" 
-      maxscreendistort="1.0" 
+      maxscreendistort="10.0" 
       minscreenblur="0" 
       maxscreenblur="10.0"
       strengthchange="-2.5" >
       <StatusEffect target="Character" ObstructVision="true" SpeedMultiplier="0.25" setvalue="true" disabledeltatime="true" />
-      <StatusEffect target="Character" setvalue="true">
-        <Affliction identifier="stun" amount="5" />
+      <StatusEffect target="Character" setvalue="true" delay="7" stackable="True">
+        <Affliction identifier="stun" amount="0.25" />
       </StatusEffect>
     </Effect>
     <icon texture="Mods/STEM/Afflictions.png" sourcerect="128,640,128,128" color="255,0,0,255" origin="0,0"/>
